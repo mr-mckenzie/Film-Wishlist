@@ -5,7 +5,7 @@ import CategorySlider from "./CategorySlider"
 const SearchForm = () => {
 
     const [searchQuery, setSearchQuery] = useState("")
-    const [searchCategory, setSearchCategory] = useState()
+    const [searchCategory, setSearchCategory] = useState("title")
 
 
     const handleSubmit = (event) => {
@@ -19,7 +19,7 @@ const SearchForm = () => {
 
     return (
         <div>
-            <CategorySlider></CategorySlider>
+            <CategorySlider searchCategory={searchCategory} setSearchCategory={setSearchCategory}></CategorySlider>
             <form onSubmit = {handleSubmit}> 
                 <input type="text" placeholder="search" onChange={handleChange} value={searchQuery}></input>
             </form>
