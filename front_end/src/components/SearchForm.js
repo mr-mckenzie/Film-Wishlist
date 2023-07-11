@@ -1,5 +1,6 @@
 import { useState } from "react"
 import ExternalServices from "../services/ExternalServices"
+import CategorySlider from "./CategorySlider"
 
 const SearchForm = () => {
 
@@ -18,6 +19,7 @@ const SearchForm = () => {
 
     return (
         <div>
+            <CategorySlider></CategorySlider>
             <form onSubmit = {handleSubmit}> 
                 <input type="text" placeholder="search" onChange={handleChange} value={searchQuery}></input>
             </form>
