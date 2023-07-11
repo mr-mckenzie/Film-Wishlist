@@ -14,7 +14,7 @@ const SearchForm = () => {
 
     const handleChange = (event) => {
         setSearchQuery(event.target.value)
-        ExternalServices.getFilmByTitle(event.target.value)
+        ExternalServices.getActorByName(event.target.value)
     }
 
     return (
