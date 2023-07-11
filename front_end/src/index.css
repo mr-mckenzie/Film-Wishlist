@@ -11,3 +11,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.switch-toggle {
+  float: left;
+  background: black;
+  border-radius: 2px;
+  width: 90px;
+}
+.switch-toggle input {
+ position: absolute;
+ opacity: 0;
+ width: 30%;
+}
+.switch-toggle input + label {
+ padding: 10px;
+ float:left;
+ color: black;
+ cursor: pointer;
+}
+.switch-toggle input:checked + label {
+ background: red;
+ border-radius: 50%;
+}
+
+.numberDiv {
+ width: 90px;
+ display: flex;
+ padding-left: 10px;
+ }
+
+.numberDiv p {
+  width: 30%;
+  }
