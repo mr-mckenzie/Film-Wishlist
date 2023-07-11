@@ -1,4 +1,8 @@
 # Capstone_Project
 
-npm i
-npm start
+to initialise and run react app
+- npm i
+- npm start
+
+to install router
+- npm install react-router-dom
