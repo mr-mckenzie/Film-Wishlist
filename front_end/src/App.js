@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
+import NavBar from './components/NavBar';
+
 import Home from './pages/Home';
 import Search from './pages/Search';
 import Recommendations from './pages/Recommendations';
@@ -19,7 +21,7 @@ function App() {
 
   return (
     <Router>
-      {/* <NavBar/> */}
+      <NavBar/>
       {/* <div className="App"> */}
       <Routes>
         <Route exact path = "/" element = {<Home/>} />
