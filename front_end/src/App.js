@@ -20,10 +20,19 @@ function App() {
   // const [searchQuery, setSearchQuery] = useState("")
   // const [searchCategory, setSearchCategory] = useState()
   const [films, setFilms] = useState([])
+  const [wishlist, setWishlist] = useState([])
+  const [selectedFilm, setSelectedFilm] = useState({})
 
   return (
 
-    <FullPageScroll setFilms={setFilms} films={films}/>
+    <FullPageScroll 
+    setFilms={setFilms} 
+    films={films} 
+    wishlist={wishlist} 
+    setWishlist={setWishlist}
+    selectedFilm={selectedFilm}
+    setSelectedFilm={setSelectedFilm}
+    />
     // <Router>
     //   <NavBar/>
     //   {/* <div className="App"> */}
