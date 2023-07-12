@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import ExternalServices from '../services/ExternalServices';
 
+// to do with on page styling
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -13,28 +14,40 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function AutoGrid({films}) {
+// this is the main function in this folder
+const AutoGrid = ({films, wishlist, setWishlist, selectedFilm, setSelectedFilm}) => {
 
+    // attempting to add films to a wishlist
+    // const addToWishlist = (filmIdToAddToWishlist) => {
+    //   updateWishlist(filmIdToAddToWishlist)
+    //   .then(()=>{setWishlist(wishlist=>[...wishlist, filmIdToAddToWishlist])})
+    // }
 
+    // returning a grid of film titles and posters
     const mapFilms = (filmsToMap) => {
         let mappedFilms = []
-            if (filmsToMap && filmsToMap.length > 0) {
-                mappedFilms = filmsToMap.map( film => {
-                    return (         
-                        <Grid>
-                            <Item>{film.title} <br></br>
-                            <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" /> </Item>
-                        </Grid>
-                    )
-            })}
-        return mappedFilms}
+        if (filmsToMap && filmsToMap.length > 0) {
+            mappedFilms = filmsToMap.map( film => {
+                return (         
+                    <Grid>
+                        <Item>{film.title} 
+                        <br></br>
+                        <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" /> </Item>
+                        <button onClick ={()=>{addToWishlist(film.id)}}>Add to Wishlist</button>
+                      </Grid>
+                )
+            })
+          }
+        return mappedFilms
+    }
 
-  return (
-
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={3}>
-        {mapFilms(films)}
-      </Grid>
-    </Box>
-  );
+    return (
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={3}>
+          {mapFilms(films)}
+        </Grid>
+      </Box>
+    );
 }
+
+export default AutoGrid

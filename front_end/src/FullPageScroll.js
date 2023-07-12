@@ -1,5 +1,7 @@
 import React from "react";
 import Fullpage,{ FullPageSections, FullpageSection, FullpageNavigation } from "@ap.cx/react-fullpage";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 import Home from './pages/Home';
 import Search from './pages/Search';
@@ -9,7 +11,7 @@ import Ratings from './pages/Ratings';
 import Statistics from './pages/Statistics';
 import NavBar from "./components/NavBar";
 
-const FullPageScroll = ({films, setFilms}) => {
+const FullPageScroll = ({films, setFilms, wishlist, setWishlist}) => {
     const SectionStyle = {
         // input height/width/display etc as needed
         display: 'flex',
@@ -18,7 +20,6 @@ const FullPageScroll = ({films, setFilms}) => {
     }
     return (
         <Fullpage>
-        
             <FullpageNavigation/>
             {/* <NavBar/> */}
             <FullPageSections>
@@ -32,7 +33,7 @@ const FullPageScroll = ({films, setFilms}) => {
                     <Recommendations/>
                 </FullpageSection>
                 <FullpageSection style={SectionStyle}>
-                    <Wishlist/>
+                    <Wishlist wishlist={wishlist} setWishlist={setWishlist}/>
                 </FullpageSection>
                 <FullpageSection style={SectionStyle}>
                     <Ratings/>
