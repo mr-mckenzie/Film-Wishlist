@@ -23,7 +23,7 @@ function App() {
 
   return (
 
-    <FullPageScroll/>
+    <FullPageScroll setFilms={setFilms} films={films}/>
     // <Router>
     //   <NavBar/>
     //   {/* <div className="App"> */}
