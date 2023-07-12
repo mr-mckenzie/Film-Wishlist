@@ -19,8 +19,10 @@ function App() {
 
   // const [searchQuery, setSearchQuery] = useState("")
   // const [searchCategory, setSearchCategory] = useState()
+  const [films, setFilms] = useState([])
 
   return (
+
     <FullPageScroll/>
     // <Router>
     //   <NavBar/>
@@ -35,6 +37,7 @@ function App() {
     //     <Route path = "*" element = {<ErrorPage/>} />
     //   </Routes>
     // </Router>
+
   );
 }
 
