@@ -18,6 +18,7 @@ function App() {
 
   // const [searchQuery, setSearchQuery] = useState("")
   // const [searchCategory, setSearchCategory] = useState()
+  const [films, setFilms] = useState([])
 
   return (
     <Router>
@@ -25,7 +26,7 @@ function App() {
       {/* <div className="App"> */}
       <Routes>
         <Route exact path = "/" element = {<Home/>} />
-        <Route path = "/search" element = {<Search/>} />
+        <Route path = "/search" element = {<Search films={films} setFilms={setFilms}/>} />
         <Route path = "/recommendations" element = {<Recommendations/>} />
         <Route path = "/wishlist" element = {<Wishlist/>} />
         <Route path = "/ratings" element = {<Ratings/>} />
