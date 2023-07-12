@@ -11,7 +11,7 @@ import Ratings from './pages/Ratings';
 import Statistics from './pages/Statistics';
 import NavBar from "./components/NavBar";
 
-const FullPageScroll = ({films, setFilms, wishlist, setWishlist}) => {
+const FullPageScroll = ({films, setFilms, wishlist, setWishlist, setSelectedFilm}) => {
     const SectionStyle = {
         // input height/width/display etc as needed
         display: 'flex',
@@ -27,7 +27,7 @@ const FullPageScroll = ({films, setFilms, wishlist, setWishlist}) => {
                     <Home/>
                 </FullpageSection>
                 <FullpageSection style={SectionStyle}>
-                    <Search films={films} setFilms={setFilms}/>
+                    <Search films={films} setFilms={setFilms} setSelectedFilm={setSelectedFilm}/>
                 </FullpageSection>
                 <FullpageSection style={SectionStyle}>
                     <Recommendations/>

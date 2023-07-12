@@ -20,6 +20,25 @@ const ExternalServices = {
 
     },
 
+    getFilmById(id) {
+
+      const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: "bearer " + API_readAccessToken
+        }
+        };
+        
+        const resultFromFetch = fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US&append_to_response=credits,keywords`, options)
+        .then(response => response.json())
+        .catch(err => console.error(err));
+
+        return resultFromFetch
+
+
+    },
+
     getActorByName(actor) {
         const options = {
             method: 'GET',
