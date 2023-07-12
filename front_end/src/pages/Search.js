@@ -1,12 +1,12 @@
 import React from "react";
-import SearchForm from '../components/SearchForm';
-import FilmCarousel from '../components/FilmCarousel'
+import SearchForm from '../components/Search_SearchForm';
+import SearchResults from '../components/Search_SearchResults';
 
 const Search = ({films, setFilms, setSelectedFilm}) => (
     <div>
         <h4>Search</h4>
         <SearchForm films={films} setFilms={setFilms}/> 
-        <FilmCarousel films={films} setSelectedFilm={setSelectedFilm}/>
+        <SearchResults films={films} setSelectedFilm={setSelectedFilm}/>
     </div>
 )
 

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import ExternalServices from "../services/ExternalServices"
-import CategorySlider from "./CategorySlider"
-import FilmCarousel from "./FilmCarousel"
+import CategorySlider from "./Search_CategorySlider"
+import FilmCarousel from "./Search_SearchResults"
 
 const SearchForm = ({films, setFilms}) => {
 
