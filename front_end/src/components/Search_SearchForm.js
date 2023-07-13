@@ -3,11 +3,10 @@ import ExternalServices from "../services/ExternalServices"
 import CategorySlider from "./Search_CategorySlider"
 import FilmCarousel from "./Search_SearchResults"
 
-const SearchForm = ({films, setFilms}) => {
+const SearchForm = ({setListOfFilmsFromAPI}) => {
 
     const [searchQuery, setSearchQuery] = useState("")
     const [searchCategory, setSearchCategory] = useState("title")
-    const [keywords, setKeywords] = useState([])
 
 
     const handleSubmit = (event) => {
@@ -24,8 +23,7 @@ const SearchForm = ({films, setFilms}) => {
         } else if (searchCategory == "keyword") {
             APIresponse = ExternalServices.getFilmByKeyword(event.target.value)
         }
-        APIresponse.then(result => setFilms(result));
-        console.log("API Films = ", films)
+        APIresponse.then(result => setListOfFilmsFromAPI(result));
     }
 
     return (

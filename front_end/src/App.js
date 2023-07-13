@@ -12,7 +12,7 @@ import Statistics from './pages/Statistics';
 
 function App() {
 
-  const [films, setFilms] = useState([])
+  const [listOfFilmsFromAPI, setListOfFilmsFromAPI] = useState([])
   const [wishlist, setWishlist] = useState([])
   const [selectedFilm, setSelectedFilm] = useState({})
 
@@ -32,8 +32,8 @@ function App() {
             </FullpageSection>
             <FullpageSection style={SectionStyle}>
                 <Search 
-                films={films} 
-                setFilms={setFilms} 
+                listOfFilmsFromAPI={listOfFilmsFromAPI} 
+                setListOfFilmsFromAPI={setListOfFilmsFromAPI} 
                 setSelectedFilm={setSelectedFilm}/>
             </FullpageSection>
             <FullpageSection style={SectionStyle}>

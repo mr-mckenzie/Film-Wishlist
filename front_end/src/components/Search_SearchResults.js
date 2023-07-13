@@ -15,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 // this is the main function in this folder
-const AutoGrid = ({films, setSelectedFilm}) => {
+const AutoGrid = ({listOfFilmsFromAPI, setSelectedFilm}) => {
 
     // attempting to add films to a wishlist
     const addToWishlist = (filmIdToAddToWishlist) => {
@@ -44,7 +44,7 @@ const AutoGrid = ({films, setSelectedFilm}) => {
     return (
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={3}>
-          {mapFilms(films)}
+          {mapFilms(listOfFilmsFromAPI)}
         </Grid>
       </Box>
     );
