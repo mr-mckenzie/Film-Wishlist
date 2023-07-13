@@ -1,9 +1,6 @@
 package com.film_project.filmService;
 
-import com.film_project.filmService.models.Film;
-import com.film_project.filmService.models.Genre;
-import com.film_project.filmService.models.Keyword;
-import com.film_project.filmService.models.ProductionCountry;
+import com.film_project.filmService.models.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,6 +21,9 @@ public class FilmTests {
     List<ProductionCountry> productionCountries;
     List<Genre> genres;
     List<Keyword> keywords;
+    List<Person> cast;
+    List<Person> crew;
+    int rating;
 
 
 
@@ -36,18 +36,16 @@ public class FilmTests {
         releaseDate = "1994-09-23";
         runtime = 142;
         productionCountries = new ArrayList<>();
-        productionCountries.add("United States of America");
+        //productionCountries.add("United States of America");
         genres = new ArrayList<>();
         genres.add( new Genre(101L, "Drama", film) );
         genres.add( new Genre(102L, "Crime", film) );
         keywords = new ArrayList<>();
-//        keywords.add(new Keyword("prison"));
-//        keywords.add(new Keyword("corruption"));
-//        keywords.add(new Keyword("police brutality"));
-//        keywords.add(new Keyword("based on novel or book"));
-//        keywords.add(new Keyword("prison cell"));
-
-
+        keywords.add(new Keyword(2131L, "prison", film));
+        keywords.add(new Keyword(25411L, "corruption", film));
+        cast = new ArrayList<>();
+        crew = new ArrayList<>();
+        rating = 5;
     }
 
     @Test
@@ -61,9 +59,12 @@ public class FilmTests {
                 posterPath,
                 releaseDate,
                 runtime,
-                productionCountries,
                 genres,
                 keywords,
+                crew,
+                cast,
+                productionCountries,
+                rating
 
         );
     }
