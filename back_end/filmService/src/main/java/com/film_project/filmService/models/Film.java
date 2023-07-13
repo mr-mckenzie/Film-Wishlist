@@ -25,26 +25,26 @@ public class Film {
     private String releaseDate;
     @Column(name = "runtime")
     private int runtime;
-    @Column(name = "production_Countries")
-    @JsonIgnoreProperties({"film"})
-    @OneToMany(mappedBy = "film")
-    private List<ProductionCountry> productionCountries;
+//    @Column(name = "production_Countries")
+//    @JsonIgnoreProperties({"film"})
+//    @OneToMany(mappedBy = "film")
+//    private List<ProductionCountry> productionCountries;
     @Column(name = "genres")
     @JsonIgnoreProperties({"film"})
     @OneToMany(mappedBy = "film")
     private List<Genre> genres;
-    @Column(name = "keywords")
-    @JsonIgnoreProperties({"film"})
-    @OneToMany(mappedBy = "film")
-    private List<Film> keywords;
-    @Column(name = "cast")
-    @JsonIgnoreProperties({"film"})
-    @OneToMany(mappedBy = "film")
-    private List<Cast> cast;
-    @Column(name = "crew")
-    @JsonIgnoreProperties({"film"})
-    @OneToMany(mappedBy = "film")
-    private List<Crew> crew;
+//    @Column(name = "keywords")
+//    @JsonIgnoreProperties({"film"})
+//    @OneToMany(mappedBy = "film")
+//    private List<Film> keywords;
+//    @Column(name = "cast")
+//    @JsonIgnoreProperties({"film"})
+//    @OneToMany(mappedBy = "film")
+//    private List<Cast> cast;
+//    @Column(name = "crew")
+//    @JsonIgnoreProperties({"film"})
+//    @OneToMany(mappedBy = "film")
+//    private List<Crew> crew;
     @Column(name = "rating")
     private int rating;
 
@@ -59,11 +59,11 @@ public class Film {
         this.posterPath = posterPath;
         this.releaseDate = releaseDate;
         this.runtime = runtime;
-        this.productionCountries = productionCountries;
+        //this.productionCountries = productionCountries;
         this.genres = genres;
-        this.keywords = keywords;
-        this.cast = cast;
-        this.crew = crew;
+        //this.keywords = keywords;
+        //this.cast = cast;
+        //this.crew = crew;
         this.rating = rating;
     }
 
@@ -123,13 +123,13 @@ public class Film {
         this.runtime = runtime;
     }
 
-    public List<ProductionCountry> getProductionCountries() {
-        return productionCountries;
-    }
+//    public List<ProductionCountry> getProductionCountries() {
+//        return productionCountries;
+//    }
 
-    public void setProductionCountries(List<ProductionCountry> productionCountries) {
-        this.productionCountries = productionCountries;
-    }
+//    public void setProductionCountries(List<ProductionCountry> productionCountries) {
+//        this.productionCountries = productionCountries;
+//    }
 
     public List<Genre> getGenres() {
         return genres;
@@ -139,29 +139,29 @@ public class Film {
         this.genres = genres;
     }
 
-    public List<Film> getKeywords() {
-        return keywords;
-    }
-
-    public void setKeywords(List<Film> keywords) {
-        this.keywords = keywords;
-    }
-
-    public List<Cast> getCast() {
-        return cast;
-    }
-
-    public void setCast(List<Cast> cast) {
-        this.cast = cast;
-    }
-
-    public List<Crew> getCrew() {
-        return crew;
-    }
-
-    public void setCrew(List<Crew> crew) {
-        this.crew = crew;
-    }
+//    public List<Film> getKeywords() {
+//        return keywords;
+//    }
+//
+//    public void setKeywords(List<Film> keywords) {
+//        this.keywords = keywords;
+//    }
+//
+//    public List<Cast> getCast() {
+//        return cast;
+//    }
+//
+//    public void setCast(List<Cast> cast) {
+//        this.cast = cast;
+//    }
+//
+//    public List<Crew> getCrew() {
+//        return crew;
+//    }
+//
+//    public void setCrew(List<Crew> crew) {
+//        this.crew = crew;
+//    }
 
     public int getRating() {
         return rating;
