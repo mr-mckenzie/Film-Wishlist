@@ -3,6 +3,7 @@ package com.film_project.filmService;
 import com.film_project.filmService.models.Film;
 import com.film_project.filmService.models.Genre;
 import com.film_project.filmService.models.Keyword;
+import com.film_project.filmService.models.ProductionCountry;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,6 +13,7 @@ import java.util.List;
 public class FilmTests {
 
 
+    Film film;
     Long id;
     String title;
     String originalTitle;
@@ -19,9 +21,9 @@ public class FilmTests {
     String posterPath;
     String releaseDate;
     int runtime;
-    List<String> productionCountries;
-    List<String> genres;
-    List<String> keywords;
+    List<ProductionCountry> productionCountries;
+    List<Genre> genres;
+    List<Keyword> keywords;
 
 
 
@@ -36,14 +38,14 @@ public class FilmTests {
         productionCountries = new ArrayList<>();
         productionCountries.add("United States of America");
         genres = new ArrayList<>();
-        genres.add( new Genre("Drama"));
-        genres.add(new Genre("Crime"));
+        genres.add( new Genre(101L, "Drama", film) );
+        genres.add( new Genre(102L, "Crime", film) );
         keywords = new ArrayList<>();
-        keywords.add(new Keyword("prison"));
-        keywords.add(new Keyword("corruption"));
-        keywords.add(new Keyword("police brutality"));
-        keywords.add(new Keyword("based on novel or book"));
-        keywords.add(new Keyword("prison cell"));
+//        keywords.add(new Keyword("prison"));
+//        keywords.add(new Keyword("corruption"));
+//        keywords.add(new Keyword("police brutality"));
+//        keywords.add(new Keyword("based on novel or book"));
+//        keywords.add(new Keyword("prison cell"));
 
 
     }
