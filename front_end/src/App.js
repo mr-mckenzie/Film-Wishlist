@@ -34,7 +34,9 @@ function App() {
                 <Search 
                 listOfFilmsFromAPI={listOfFilmsFromAPI} 
                 setListOfFilmsFromAPI={setListOfFilmsFromAPI} 
-                setSelectedFilm={setSelectedFilm}/>
+                setSelectedFilm={setSelectedFilm}
+                wishlist={wishlist}
+                setWishlist={setWishlist}/>
             </FullpageSection>
             <FullpageSection style={SectionStyle}>
                 <Recommendations/>

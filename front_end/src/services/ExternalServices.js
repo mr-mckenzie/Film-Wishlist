@@ -31,7 +31,7 @@ const ExternalServices = {
         };
         
         const resultFromFetch = fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US&append_to_response=credits,keywords`, options)
-        .then(response => response.json())
+        .then(promiseFromAPI => promiseFromAPI.json())
         .catch(err => console.error(err));
 
         return resultFromFetch

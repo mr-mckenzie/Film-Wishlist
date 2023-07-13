@@ -15,12 +15,15 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 // this is the main function in this folder
-const AutoGrid = ({listOfFilmsFromAPI, setSelectedFilm}) => {
+const AutoGrid = ({listOfFilmsFromAPI, setSelectedFilm, wishlist, setWishlist}) => {
 
     // attempting to add films to a wishlist
     const addToWishlist = (filmIdToAddToWishlist) => {
-      ExternalServices.getFilmById(filmIdToAddToWishlist)
-      .then(response => {setSelectedFilm(response)})
+      const wishlistFilm = ExternalServices.getFilmById(filmIdToAddToWishlist)
+      
+      wishlistFilm.then(filmObject => setSelectedFilm(filmObject))
+      
+      wishlistFilm.then(filmObject => setWishlist([...wishlist, filmObject]))
     }
 
     // returning a grid of film titles and posters
