@@ -39,12 +39,17 @@ public class Film {
 //    private List<Film> keywords;
 //    @Column(name = "cast")
 //    @JsonIgnoreProperties({"film"})
-//    @OneToMany(mappedBy = "film")
-//    private List<Cast> cast;
-//    @Column(name = "crew")
+//
+
 //    @JsonIgnoreProperties({"film"})
-//    @OneToMany(mappedBy = "film")
-//    private List<Crew> crew;
+    @Column(name = "crew")
+    @OneToMany(mappedBy = "film")
+    private List<Crew> crew;
+
+    @Column(name = "cast")
+    @OneToMany(mappedBy = "film")
+    private List<Cast> cast;
+
     @Column(name = "rating")
     private int rating;
 
