@@ -33,6 +33,7 @@ public class Film {
     @JsonIgnoreProperties({"film"})
     @OneToMany(mappedBy = "film")
     private List<Genre> genres;
+
     @Column(name = "keywords")
     @JsonIgnoreProperties({"film"})
     @OneToMany(mappedBy = "film")
@@ -49,6 +50,7 @@ public class Film {
     @JsonIgnoreProperties({"film"})
     @OneToMany(mappedBy = "film")
     private List<ProductionCountry> productionCountries;
+
     @Column(name = "rating")
     private int rating;
 
