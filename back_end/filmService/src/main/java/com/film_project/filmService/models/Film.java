@@ -1,5 +1,8 @@
 package com.film_project.filmService.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -23,16 +26,32 @@ public class Film {
     @Column(name = "runtime")
     private int runtime;
     @Column(name = "production_Countries")
-    private List<String> productionCountries;
+    @JsonIgnoreProperties({"film"})
+    @OneToMany(mappedBy = "film")
+    private List<ProductionCountry> productionCountries;
     @Column(name = "genres")
-    private List<String> genres;
+    @JsonIgnoreProperties({"film"})
+    @OneToMany(mappedBy = "film")
+    private List<Genre> genres;
     @Column(name = "keywords")
-    private List<String> keywords;
+    @JsonIgnoreProperties({"film"})
+    @OneToMany(mappedBy = "film")
+    private List<Film> keywords;
+    @Column(name = "cast")
+    @JsonIgnoreProperties({"film"})
+    @OneToMany(mappedBy = "film")
+    private List<Cast> cast;
+    @Column(name = "crew")
+    @JsonIgnoreProperties({"film"})
+    @OneToMany(mappedBy = "film")
+    private List<Crew> crew;
+    @Column(name = "rating")
+    private int rating;
 
     public Film() {
     }
 
-    public Film(Long id, String title, String originalTitle, String overview, String posterPath, String releaseDate, int runtime, List<String> productionCountries, List<String> genres, List<String> keywords) {
+    public Film(Long id, String title, String originalTitle, String overview, String posterPath, String releaseDate, int runtime, List<ProductionCountry> productionCountries, List<Genre> genres, List<Film> keywords, List<Cast> cast, List<Crew> crew, int rating) {
         this.id = id;
         this.title = title;
         this.originalTitle = originalTitle;
@@ -43,6 +62,9 @@ public class Film {
         this.productionCountries = productionCountries;
         this.genres = genres;
         this.keywords = keywords;
+        this.cast = cast;
+        this.crew = crew;
+        this.rating = rating;
     }
 
     public Long getId() {
@@ -101,27 +123,51 @@ public class Film {
         this.runtime = runtime;
     }
 
-    public List<String> getProductionCountries() {
+    public List<ProductionCountry> getProductionCountries() {
         return productionCountries;
     }
 
-    public void setProductionCountries(List<String> productionCountries) {
+    public void setProductionCountries(List<ProductionCountry> productionCountries) {
         this.productionCountries = productionCountries;
     }
 
-    public List<String> getGenres() {
+    public List<Genre> getGenres() {
         return genres;
     }
 
-    public void setGenres(List<String> genres) {
+    public void setGenres(List<Genre> genres) {
         this.genres = genres;
     }
 
-    public List<String> getKeywords() {
+    public List<Film> getKeywords() {
         return keywords;
     }
 
-    public void setKeywords(List<String> keywords) {
+    public void setKeywords(List<Film> keywords) {
         this.keywords = keywords;
+    }
+
+    public List<Cast> getCast() {
+        return cast;
+    }
+
+    public void setCast(List<Cast> cast) {
+        this.cast = cast;
+    }
+
+    public List<Crew> getCrew() {
+        return crew;
+    }
+
+    public void setCrew(List<Crew> crew) {
+        this.crew = crew;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 }
