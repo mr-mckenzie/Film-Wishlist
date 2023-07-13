@@ -25,10 +25,6 @@ public class Film {
     private String releaseDate;
     @Column(name = "runtime")
     private int runtime;
-//    @Column(name = "production_Countries")
-//    @JsonIgnoreProperties({"film"})
-//    @OneToMany(mappedBy = "film")
-//    private List<ProductionCountry> productionCountries;
     @Column(name = "genres")
     @JsonIgnoreProperties({"film"})
     @OneToMany(mappedBy = "film")
