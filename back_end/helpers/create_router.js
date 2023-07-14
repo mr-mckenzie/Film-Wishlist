@@ -27,6 +27,18 @@ const createRouter = function (collection) {
             response.json({status: 500, error: err})
         })
     })
+    
+    // get films with rating NOT null
+    router.get('/rated', (request, response) => {
+        collection.find({rating: {$ne: null}})
+        .toArray()
+        .then((docs) => response.json(docs))
+        .catch((err) => {
+            console.error(err)
+            response.status(500)
+            response.json({status: 500, error: err})
+        })
+    })
 
 
     // router.put('/:id', (req, res) => {
