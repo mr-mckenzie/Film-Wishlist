@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import ExternalServices from '../services/ExternalServices';
+import InternalServices, { postFilmToDatabase } from '../services/InternalServices';
+
 
 // to do with on page styling
 const Item = styled(Paper)(({ theme }) => ({
@@ -20,10 +22,10 @@ const AutoGrid = ({listOfFilmsFromAPI, setSelectedFilm, wishlist, setWishlist}) 
     // attempting to add films to a wishlist
     const addToWishlist = (filmIdToAddToWishlist) => {
       const wishlistFilm = ExternalServices.getFilmById(filmIdToAddToWishlist)
-      
-      wishlistFilm.then(filmObject => setSelectedFilm(filmObject))
-      
+      console.log(wishlistFilm)
+      wishlistFilm.then(wishlistFilm => setSelectedFilm(wishlistFilm))
       wishlistFilm.then(filmObject => setWishlist([...wishlist, filmObject]))
+      wishlistFilm.then(filmObject => postFilmToDatabase(filmObject))
     }
 
     // returning a grid of film titles and posters
