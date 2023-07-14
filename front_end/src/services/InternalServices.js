@@ -27,6 +27,11 @@ export const getWishlistFilms=()=>{
     .then (response => response.json())
 }
 
+export const getRatedFilms=()=>{
+    return fetch(baseURL + '/rated')
+    .then (response => response.json())
+}
+
 export const updateChosenFilm = (id) => {
     return fetch(baseURL + id, {
         method: 'PUT'
