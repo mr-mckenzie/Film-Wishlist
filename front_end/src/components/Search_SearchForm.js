@@ -18,12 +18,16 @@ const SearchForm = ({setListOfFilmsFromAPI}) => {
         let APIresponse
         if (searchCategory == "title"){
             APIresponse = ExternalServices.getFilmByTitle(event.target.value)
+            APIresponse.then(result => setListOfFilmsFromAPI(result));
         } else if (searchCategory == "actor") {
             APIresponse = ExternalServices.getActorByName(event.target.value)
+            console.log(APIresponse)
+            // APIresponse.then(result => console.log(result))
         } else if (searchCategory == "keyword") {
-            APIresponse = ExternalServices.getFilmByKeyword(event.target.value)
+            APIresponse = ExternalServices.getKeyword(event.target.value)
+            APIresponse.then(result => console.log(result))
         }
-        APIresponse.then(result => setListOfFilmsFromAPI(result));
+        
     }
 
     return (
