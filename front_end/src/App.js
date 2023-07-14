@@ -17,16 +17,11 @@ function App() {
     const [wishlist, setWishlist] = useState([])
     const [selectedFilm, setSelectedFilm] = useState({})
 
-    useEffect(() => {
-        setWishlist([...wishlist, selectedFilm])
-        const filmWithRating = {...selectedFilm}
-        filmWithRating["rating"] = null
-        postFilmToDatabase(filmWithRating)
-    }, [selectedFilm])
+    
 
     useEffect(() => { getWishlistFilms()
         .then(wishlistFilms => setWishlist(wishlistFilms))
-    })
+    },[])
 
     const SectionStyle = {
       // input height/width/display etc as needed
