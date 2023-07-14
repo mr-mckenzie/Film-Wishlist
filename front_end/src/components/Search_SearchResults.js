@@ -21,7 +21,7 @@ const AutoGrid = ({listOfFilmsFromAPI, setSelectedFilm, wishlist, setWishlist}) 
     const addToWishlist = (filmIdToAddToWishlist) => {
       const wishlistFilm = ExternalServices.getFilmById(filmIdToAddToWishlist)
       
-      wishlistFilm.then(filmObject => setSelectedFilm(filmObject))
+      wishlistFilm.then(filmObject => setSelectedFilm([...filmObject, rating = null]))
       
       wishlistFilm.then(filmObject => setWishlist([...wishlist, filmObject]))
     }
