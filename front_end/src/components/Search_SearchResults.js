@@ -21,11 +21,9 @@ const AutoGrid = ({listOfFilmsFromAPI, setSelectedFilm, wishlist, setWishlist}) 
 
     // attempting to add films to a wishlist
     const addToWishlist = (filmIdToAddToWishlist) => {
-      const wishlistFilm = ExternalServices.getFilmById(filmIdToAddToWishlist)
-      console.log(wishlistFilm)
-      wishlistFilm.then(wishlistFilm => setSelectedFilm(wishlistFilm))
-      wishlistFilm.then(filmObject => setWishlist([...wishlist, filmObject]))
-      wishlistFilm.then(filmObject => postFilmToDatabase(filmObject))
+    ExternalServices.getFilmById(filmIdToAddToWishlist)
+    .then(wishlistFilm => setSelectedFilm(wishlistFilm))
+      
     }
 
     // returning a grid of film titles and posters
