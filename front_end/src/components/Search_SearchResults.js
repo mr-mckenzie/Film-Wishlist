@@ -19,11 +19,22 @@ const Item = styled(Paper)(({ theme }) => ({
 // this is the main function in this folder
 const AutoGrid = ({listOfFilmsFromAPI, setSelectedFilm, wishlist, setWishlist}) => {
 
+
+  const addRatingKeyValuePair = (filmWithAddedRating, rating = null) => {
+    filmWithAddedRating["rating"] = rating
+    return filmWithAddedRating
+  }
+    
+  
+
     // attempting to add films to a wishlist
     const addToWishlist = (filmIdToAddToWishlist) => {
-    ExternalServices.getFilmById(filmIdToAddToWishlist)
-    .then(wishlistFilm => setSelectedFilm(wishlistFilm))
-      
+      ExternalServices.getFilmById(filmIdToAddToWishlist)
+      .then(wishlistFilm => { 
+        const wishlistFilmWithRating = addRatingKeyValuePair(wishlistFilm)
+        postFilmToDatabase(wishlistFilmWithRating)
+        setWishlist([...wishlist, wishlistFilmWithRating])
+      })
     }
 
     // returning a grid of film titles and posters
@@ -37,6 +48,9 @@ const AutoGrid = ({listOfFilmsFromAPI, setSelectedFilm, wishlist, setWishlist}) 
                         <br></br>
                         <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" /> </Item>
                         <button onClick ={()=>{addToWishlist(film.id)}}>Add to Wishlist</button>
+                        <button>
+
+                        </button>
                       </Grid>
                 )
             })
