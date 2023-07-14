@@ -15,7 +15,6 @@ function App() {
 
     const [listOfFilmsFromAPI, setListOfFilmsFromAPI] = useState([])
     const [wishlist, setWishlist] = useState([])
-    const [selectedFilm, setSelectedFilm] = useState({})
 
     
 
@@ -41,7 +40,6 @@ function App() {
                 <Search 
                 listOfFilmsFromAPI={listOfFilmsFromAPI} 
                 setListOfFilmsFromAPI={setListOfFilmsFromAPI} 
-                setSelectedFilm={setSelectedFilm}
                 wishlist={wishlist}
                 setWishlist={setWishlist}/>
             </FullpageSection>
