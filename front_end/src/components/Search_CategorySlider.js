@@ -7,7 +7,6 @@ export default function CategoryToggleButton({setSearchCategory, searchCategory}
     const handleChange = (event, newSearchCategory) => {
         if (newSearchCategory !== null) {
             setSearchCategory(newSearchCategory);
-
           }
     };
 
