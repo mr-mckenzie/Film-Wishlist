@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Fullpage,{ FullPageSections, FullpageSection, FullpageNavigation } from "@ap.cx/react-fullpage";
 import './App.css';
 
@@ -8,22 +8,34 @@ import Recommendations from './pages/Recommendations';
 import Wishlist from './pages/Wishlist';
 import Ratings from './pages/Ratings';
 import Statistics from './pages/Statistics';
+import InternalServices, { postFilmToDatabase, getWishlistFilms } from './services/InternalServices.js'
 
 
 function App() {
 
-  const [listOfFilmsFromAPI, setListOfFilmsFromAPI] = useState([])
-  const [wishlist, setWishlist] = useState([])
-  const [selectedFilm, setSelectedFilm] = useState({})
+    const [listOfFilmsFromAPI, setListOfFilmsFromAPI] = useState([])
+    const [wishlist, setWishlist] = useState([])
+    const [selectedFilm, setSelectedFilm] = useState({})
 
-  const SectionStyle = {
+    useEffect(() => {
+        setWishlist([...wishlist, selectedFilm])
+        const filmWithRating = {...selectedFilm}
+        filmWithRating["rating"] = null
+        postFilmToDatabase(filmWithRating)
+    }, [selectedFilm])
+
+    useEffect(() => { getWishlistFilms()
+        .then(wishlistFilms => setWishlist(wishlistFilms))
+    })
+
+    const SectionStyle = {
       // input height/width/display etc as needed
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center'
-  }
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 
-  return (
+    return (
     <Fullpage>
         <FullpageNavigation/>
         <FullPageSections>
@@ -54,7 +66,7 @@ function App() {
             </FullpageSection>
         </FullPageSections>
     </Fullpage>
-  )
+    )
 }
 
 export default App;
