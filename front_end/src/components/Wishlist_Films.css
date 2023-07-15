@@ -1,7 +1,7 @@
 /* Import Google font - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
     * {
-        margin: 0;
+        /* margin: 0;*/
         padding: 0;
         box-sizing: border-box;
         font-family: "Poppins", sans-serif;
@@ -12,14 +12,14 @@
         align-items: center;
         justify-content: center;
         min-height: 100vh;
-        background: linear-gradient(to left top, #031A9A, #8B53FF);
+        /* background: linear-gradient(to left top, #031A9A, #8B53FF); */
     }
     .wishlist_film {
         max-width: 1100px;
         width: 100%;
         position: relative;
     }
-    .wishlist_film i {
+    /* .wishlist_film i {
         top: 50%;
         height: 50px;
         width: 50px;
@@ -33,8 +33,8 @@
         box-shadow: 0 3px 6px rgba(0,0,0,0.23);
         transform: translateY(-50%);
         transition: transform 0.1s linear;
-    }
-    .wishlist_film i:active{
+    } */
+    /* .wishlist_film i:active{
         transform: translateY(-50%) scale(0.85);
     }
     .wishlist_film i:first-child{
@@ -42,17 +42,17 @@
     }
     .wishlist_film i:last-child{
         right: -22px;
-    }
+    } */
     .wishlist_film .carousel{
         display: grid;
         grid-auto-flow: column;
         grid-auto-columns: calc((100% / 3) - 12px);
-        overflow-x: auto;
+        /* overflow-x: auto;
         scroll-snap-type: x mandatory;
         gap: 16px;
         border-radius: 8px;
         scroll-behavior: smooth;
-        scrollbar-width: none;
+        scrollbar-width: none;  */
     }
     .carousel::-webkit-scrollbar {
         display: none;

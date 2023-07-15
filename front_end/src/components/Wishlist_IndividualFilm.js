@@ -9,6 +9,8 @@ import Box from '@mui/material/Box';
 
 const WishlistIndividualFilm = ({wishlist}) => {
 
+    
+
     // to do with on page styling
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
