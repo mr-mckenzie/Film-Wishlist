@@ -18,9 +18,16 @@ function App() {
 
     
 
+    // useEffect(() => { getWishlistFilms()
+    //     .then(wishlistFilms => setWishlist(wishlistFilms))
+    // },[])
+
+    // jg editing
     useEffect(() => { getWishlistFilms()
         .then(wishlistFilms => setWishlist(wishlistFilms))
+        console.log("My Wishlist", wishlist)
     },[])
+
 
     const SectionStyle = {
       // input height/width/display etc as needed
