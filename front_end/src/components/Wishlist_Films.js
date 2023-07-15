@@ -19,12 +19,7 @@ const WishlistFilms = ({wishlist}) => {
 
     return (
         <div>
-
-            <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={3}>
-                    <WishlistIndividualFilm wishlist = {wishlist}/>
-                </Grid>
-            </Box>
+            <WishlistIndividualFilm wishlist = {wishlist}/>
         </div>
     )
 }
