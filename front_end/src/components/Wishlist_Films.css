@@ -1,0 +1,12 @@
+.wishlist_film {
+    /* display: flex; */
+    background-color: red;
+    flex-direction: column;
+    justify-content: center;
+    padding:30px;
+    margin: 30px 30px 30px 30px;
+    width: 20%;
+}
+.poster_image{
+    width: 20%
+}
