@@ -1,5 +1,7 @@
 import React from "react";
 import WishlistFilms from "../components/Wishlist_Films";
+import './Wishlist.css'
+
 
 const Wishlist = ({wishlist, setWishlist}) => (
     <div class="wishlist">

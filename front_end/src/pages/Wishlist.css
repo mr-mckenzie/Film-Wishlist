@@ -45,7 +45,7 @@
     } */
     .wishlist_film .carousel{
         display: grid;
-        grid-auto-flow: column;
+        grid-auto-flow: row;
         grid-auto-columns: calc((100% / 3) - 12px);
         /* overflow-x: auto;
         scroll-snap-type: x mandatory;

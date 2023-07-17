@@ -102,12 +102,12 @@ const ExternalServices = {
           };
           
 
-        fetch(`https://api.themoviedb.org/3/search/keyword?query=${keyword}&page=1`, options)
-            .then(response => response.json())
-            .then(response => response["results"][0]["id"])
-            .then(response => fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_keywords=${response}`, options))
+        // fetch(`https://api.themoviedb.org/3/search/keyword?query=${keywordId}&page=1`, options)
+        //     .then(response => response.json())
+        //     .then(response => response["results"][0]["id"])
+        //     .then(response => fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_keywords=${response}`, options))
 
-       const resultFromFetch = fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_count.gte=10&with_keywords=${keywordId}&with_runtime.gte=60`, options)
+        const resultFromFetch = fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_count.gte=10&with_keywords=${keywordId}&with_runtime.gte=60`, options)
 
             .then(response => response.json())
             .then(response => response.results)
@@ -132,7 +132,7 @@ const ExternalServices = {
             .catch(err => console.error(err));
         
             return keywordArray
-
+    },
 
     getFullPosterURLByPath (path) {
       const baseURL = 'https://image.tmdb.org/t/p/w342'
