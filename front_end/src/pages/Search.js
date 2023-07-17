@@ -1,6 +1,7 @@
 import React from "react";
 import SearchForm from '../components/Search_SearchForm';
 import SearchResults from '../components/Search_SearchResults';
+import './Search.css'
 
 const Search = ({listOfFilmsFromAPI, setListOfFilmsFromAPI, wishlist, setWishlist}) => (
     <div className="search_page">

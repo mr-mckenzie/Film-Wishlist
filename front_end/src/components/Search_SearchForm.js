@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import ExternalServices from "../services/ExternalServices"
 import CategorySlider from "./Search_CategorySlider"
-import Chips from "./Search_Chips"
+import Chips from "./Search_Actor_Keyword_Button"
 import TextField from '@mui/material/TextField';
 
 const SearchForm = ({setListOfFilmsFromAPI}) => {
@@ -25,7 +25,6 @@ const SearchForm = ({setListOfFilmsFromAPI}) => {
         } else if (searchCategory == "actor") {
             APIresponse = ExternalServices.getActorByName(event.target.value)
             .then(result => setActors(result))
-            // APIresponse.then(result => console.log(result))
         } else if (searchCategory == "keyword") {
             APIresponse = ExternalServices.getKeywordbyName(event.target.value)
             .then(result => setKeywords(result))
