@@ -1,7 +1,12 @@
 import React from "react";
+import RatedFilms from "../components/Ratings_RatedFilms";
+import './Ratings.css'
 
-const Ratings = () => (
-    <h4>Ratings</h4>
+const Ratings = ({ratedFilms, setRatedFilms}) => (
+    <div class="ratings">
+        <h4>Ratings</h4>
+        <RatedFilms ratedFilms = {ratedFilms} setRatedFilms = {setRatedFilms}/>
+    </div>
 )
 
 export default Ratings

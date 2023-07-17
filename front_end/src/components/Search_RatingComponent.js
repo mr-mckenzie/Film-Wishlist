@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
 
-const RatingComponent = ({addToWishlist, filmId}) => {
+const RatingComponent = ({addToRatedFilms, filmId}) => {
 
 const [value, setValue] = React.useState(null)
 
@@ -15,7 +15,7 @@ return (
                 value={value}
                 onChange={(event, newValue) => {
                 setValue(newValue)
-                addToWishlist(filmId, newValue);
+                addToRatedFilms(filmId, newValue);
                 }}
             />
     </div>

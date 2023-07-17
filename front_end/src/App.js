@@ -17,17 +17,18 @@ function App() {
 
     const [listOfFilmsFromAPI, setListOfFilmsFromAPI] = useState([])
     const [wishlist, setWishlist] = useState([])
+    const [ratedFilms, setRatedFilms] = useState([])
 
-    
 
-    // useEffect(() => { getWishlistFilms()
-    //     .then(wishlistFilms => setWishlist(wishlistFilms))
-    // },[])
-
-    // jg editing
+    // populating wishlist from database
     useEffect(() => { InternalServices.getWishlistFilms()
         .then(wishlistFilms => setWishlist(wishlistFilms))
         console.log("My Wishlist", wishlist)
+    },[])
+
+    // populating rated list from database
+    useEffect(() => { InternalServices.getRatedFilms()
+        .then(wishlistFilms => setRatedFilms(wishlistFilms))
     },[])
 
 
@@ -50,7 +51,10 @@ function App() {
                 listOfFilmsFromAPI={listOfFilmsFromAPI} 
                 setListOfFilmsFromAPI={setListOfFilmsFromAPI} 
                 wishlist={wishlist}
-                setWishlist={setWishlist}/>
+                setWishlist={setWishlist}
+                ratedFilms = {ratedFilms}
+                setRatedFilms = {setRatedFilms}
+                />
             </FullpageSection>
             <FullpageSection style={SectionStyle}>
                 <Recommendations/>
@@ -61,7 +65,10 @@ function App() {
                 setWishlist={setWishlist}/>
             </FullpageSection>
             <FullpageSection style={SectionStyle}>
-                <Ratings/>
+                <Ratings
+                    ratedFilms = {ratedFilms}
+                    setRatedFilms = {setRatedFilms}
+                />
             </FullpageSection>
             <FullpageSection style={SectionStyle}>
                 <Statistics/>
