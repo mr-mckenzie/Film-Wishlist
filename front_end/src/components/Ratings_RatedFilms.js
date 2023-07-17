@@ -5,6 +5,8 @@ from '../services/ExternalServices';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import InternalServices from '../services/InternalServices';
+import Rating from '@mui/material/Rating';
+
 
 const RatedFilms = ({ratedFilms, setRatedFilms}) => {
 
@@ -31,6 +33,9 @@ const RatedFilms = ({ratedFilms, setRatedFilms}) => {
         color: theme.palette.text.secondary,
     }));
 
+  
+    
+
     const ratedFilmsDisplay = ratedFilms.map((film) => 
     <div key = {film.id} class="ratings_films">
         <ul class="ratings_carousel">
@@ -41,6 +46,7 @@ const RatedFilms = ({ratedFilms, setRatedFilms}) => {
                     <h1>{film.title}</h1>
                     <p>Average rating: {film.vote_average}</p>
                     <p>{film.overview}</p>
+                    <Rating name="read-only" value={film.rating} readOnly />
                     <button value = {film._id} onClick ={handleClickDeleteRatedFilm}>Remove from rated films</button>
                 </li>
             </Item>
