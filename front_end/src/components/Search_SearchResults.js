@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import ExternalServices from '../services/ExternalServices';
-import InternalServices, { postFilmToDatabase } from '../services/InternalServices';
+import InternalServices from '../services/InternalServices';
 import RatingComponent from "./Search_RatingComponent"
 
 
@@ -34,7 +34,7 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist}) => {
         ExternalServices.getFilmById(filmIdToAddToWishlist)
         .then(wishlistFilm => { 
             const wishlistFilmWithRating = addRatingKeyValuePair(wishlistFilm, rating)
-            postFilmToDatabase(wishlistFilmWithRating)
+            InternalServices.postFilmToDatabase(wishlistFilmWithRating)
             setWishlist([...wishlist, wishlistFilmWithRating])
         })
     }

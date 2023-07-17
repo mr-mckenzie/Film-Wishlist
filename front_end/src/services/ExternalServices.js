@@ -3,12 +3,12 @@ const ExternalServices = {
 
     getFilmByTitle(title) {
 
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: "bearer " + API_readAccessToken
-        }
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: "bearer " + API_readAccessToken
+            }
         };
         
         const resultFromFetch = fetch(`https://api.themoviedb.org/3/search/movie?query=${title}&include_adult=false&language=en-US&page=1`, options)
@@ -17,17 +17,17 @@ const ExternalServices = {
         .catch(err => console.error(err));
 
         return resultFromFetch
-
     },
+
 
     getFilmById(id) {
 
-      const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: "bearer " + API_readAccessToken
-        }
+        const options = {
+          method: 'GET',
+          headers: {
+              accept: 'application/json',
+              Authorization: "bearer " + API_readAccessToken
+          }
         };
         
         const resultFromFetch = fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US&append_to_response=credits,keywords`, options)
@@ -35,9 +35,10 @@ const ExternalServices = {
         .catch(err => console.error(err));
 
         return resultFromFetch
-
-
     },
+
+    
+
 
     getActorByName(actor) {
         const options = {
@@ -63,7 +64,7 @@ const ExternalServices = {
             }
           };
           
-       fetch(`https://api.themoviedb.org/3/search/keyword?query=${keyword}&page=1`, options)
+        fetch(`https://api.themoviedb.org/3/search/keyword?query=${keyword}&page=1`, options)
             .then(response => response.json())
             .then(response => response["results"][0]["id"])
             .then(response => fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_keywords=${response}`, options))
@@ -81,7 +82,7 @@ const ExternalServices = {
             }
           };
           
-       const keywordArray = fetch(`https://api.themoviedb.org/3/search/keyword?query=${keyword}&page=1`, options)
+        const keywordArray = fetch(`https://api.themoviedb.org/3/search/keyword?query=${keyword}&page=1`, options)
             .then(response => response.json())
             .then(response => console.log(response))
             .catch(err => console.error(err));

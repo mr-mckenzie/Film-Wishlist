@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import WishlistIndividualFilm from "./Wishlist_IndividualFilm"
 
-const WishlistFilms = ({wishlist}) => {
+const WishlistFilms = ({wishlist, setWishlist}) => {
 
     // const wishlistDisplay = wishlist.map((film) => 
     //     <div key = {film.id} class="wishlist_film">
@@ -19,7 +19,7 @@ const WishlistFilms = ({wishlist}) => {
 
     return (
         <div>
-            <WishlistIndividualFilm wishlist = {wishlist}/>
+            <WishlistIndividualFilm wishlist = {wishlist} setWishlist={setWishlist}/>
         </div>
     )
 }
