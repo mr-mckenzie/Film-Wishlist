@@ -1,0 +1,19 @@
+.ratings_card{
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+    width: 30%;
+
+    /* flex-wrap: nowrap;
+    overflow: scroll;
+    position: absolute;
+    top: 21%;
+    width: 100%;
+    margin-top: 2%;
+    height: 11%;  */
+}
+
+.ratings_poster_image{
+    height: 65%;
+    width: max-content;
+}
