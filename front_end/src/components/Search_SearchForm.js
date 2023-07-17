@@ -1,12 +1,15 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ExternalServices from "../services/ExternalServices"
 import CategorySlider from "./Search_CategorySlider"
-import FilmCarousel from "./Search_SearchResults"
+import Chips from "./Search_Chips"
+import TextField from '@mui/material/TextField';
 
 const SearchForm = ({setListOfFilmsFromAPI}) => {
 
     const [searchQuery, setSearchQuery] = useState("")
     const [searchCategory, setSearchCategory] = useState("title")
+    const [keywords, setKeywords] = useState([])
+    const [actors, setActors] = useState([])
 
 
     const handleSubmit = (event) => {
@@ -18,26 +21,24 @@ const SearchForm = ({setListOfFilmsFromAPI}) => {
         let APIresponse
         if (searchCategory == "title"){
             APIresponse = ExternalServices.getFilmByTitle(event.target.value)
-            APIresponse.then(result => setListOfFilmsFromAPI(result));
+            .then(result => setListOfFilmsFromAPI(result));
         } else if (searchCategory == "actor") {
             APIresponse = ExternalServices.getActorByName(event.target.value)
-            console.log(APIresponse)
+            .then(result => setActors(result))
             // APIresponse.then(result => console.log(result))
         } else if (searchCategory == "keyword") {
-            APIresponse = ExternalServices.getKeyword(event.target.value)
-            APIresponse.then(result => console.log(result))
+            APIresponse = ExternalServices.getKeywordbyName(event.target.value)
+            .then(result => setKeywords(result))
         }
-        
     }
 
     return (
-        <div>
-            <CategorySlider searchCategory={searchCategory} setSearchCategory={setSearchCategory}></CategorySlider>
-            <form onSubmit = {handleSubmit}> 
-                <input type="text" placeholder="search" onChange={handleChange} value={searchQuery}></input>
+            <form className="search_form" onSubmit = {handleSubmit}>
+                <CategorySlider searchCategory={searchCategory} setSearchCategory={setSearchCategory} setActors={setActors} setKeywords={setKeywords} setSearchQuery={setSearchQuery}/>
+                <TextField id="search" label="Search" variant="outlined" onChange={handleChange} value={searchQuery}/>
+                <Chips searchResults={actors} setListOfFilmsFromAPI={setListOfFilmsFromAPI} content={"actor"}/>
+                <Chips searchResults={keywords} setListOfFilmsFromAPI={setListOfFilmsFromAPI} content={"keyword"} />
             </form>
-
-        </div>
     )
 
 }
