@@ -3,11 +3,10 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-// import './script'
+import InternalServices from "../services/InternalServices";
 
 
-
-const WishlistIndividualFilm = ({wishlist}) => {
+const WishlistIndividualFilm = ({wishlist, setWishlist}) => {
 
     
 
@@ -20,6 +19,21 @@ const WishlistIndividualFilm = ({wishlist}) => {
         color: theme.palette.text.secondary,
     }));
 
+    // delete film from wishlist
+    const deleteFilmFromWishlist = (id) => {
+        InternalServices.deleteWishlistFilmByID(id)
+        .then(() => InternalServices.getWishlistFilms()
+        .then((updatedWishlist) => {setWishlist(updatedWishlist)})
+        )
+    }
+    
+
+    const handleClickDeleteWishlistFilm = (event) => {
+        console.log(event.target.value)
+        deleteFilmFromWishlist(event.target.value)
+    }
+
+
     const wishlistDisplay = wishlist.map((film) => 
         <div key = {film.id} class="wishlist_film">
             <ul class="carousel">
@@ -30,7 +44,7 @@ const WishlistIndividualFilm = ({wishlist}) => {
                         <h1>{film.title}</h1>
                         <p>Average rating: {film.vote_average}</p>
                         <p>{film.overview}</p>
-                        <button>Remove from wishlist (needs a function)</button>
+                        <button value = {film._id} onClick ={handleClickDeleteWishlistFilm }>Remove from wishlist (needs a function)</button>
                     </li>
                 </Item>
             </Grid>
@@ -45,6 +59,6 @@ const WishlistIndividualFilm = ({wishlist}) => {
             </Grid>
         </Box>
     )
-}
 
+}
 export default WishlistIndividualFilm

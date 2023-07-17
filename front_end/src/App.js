@@ -8,8 +8,9 @@ import Recommendations from './pages/Recommendations';
 import Wishlist from './pages/Wishlist';
 import Ratings from './pages/Ratings';
 import Statistics from './pages/Statistics';
-import InternalServices, { postFilmToDatabase, getWishlistFilms } from './services/InternalServices.js'
+import InternalServices from './services/InternalServices';
 import { ClassNames } from '@emotion/react';
+
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
     // },[])
 
     // jg editing
-    useEffect(() => { getWishlistFilms()
+    useEffect(() => { InternalServices.getWishlistFilms()
         .then(wishlistFilms => setWishlist(wishlistFilms))
         console.log("My Wishlist", wishlist)
     },[])
