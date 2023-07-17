@@ -17,14 +17,14 @@ export default function Chips({searchResults, setListOfFilmsFromAPI, content}) {
                 return (
                     content==="actor" ? 
 
-                    <Button id={result.id} onClick={handleClick} variant="outlined">
+                    <Button id={result.id} onClick={handleClick} variant="outlined" className='actor_button'>
                         <Avatar src={ExternalServices.getFullActorImageURLByPath(result.profile_path)}/>
                         {result.name}
                     </Button> 
                 
                 :
                 
-                    <Button id={result.id} onClick={handleClick} variant="outlined">
+                    <Button id={result.id} onClick={handleClick} variant="outlined" className='keyword_button'>
                     {result.name}
                     </Button> 
 
@@ -47,7 +47,7 @@ export default function Chips({searchResults, setListOfFilmsFromAPI, content}) {
 
 
   return (
-    <Stack className="chip_container" direction={"row"} spacing={1}>
+    <Stack className="button_container" direction={"row"} spacing={10}>
         {mapSearchResults(searchResults)}
     </Stack>
   );
