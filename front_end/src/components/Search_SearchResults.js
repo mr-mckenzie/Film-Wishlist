@@ -27,8 +27,6 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist}) => {
         return filmWithAddedRating
     }
     
-  
-
     // attempting to add films to a wishlist
     const addToWishlist = (filmIdToAddToWishlist, rating = null) => {
         ExternalServices.getFilmById(filmIdToAddToWishlist)
@@ -44,15 +42,13 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist}) => {
         let mappedFilms = []
         if (filmsToMap && filmsToMap.length > 0) {
             mappedFilms = filmsToMap.map( film => {
-                return (         
-                    <Grid>
-                        <Item>{film.title} 
-                        <br></br>
-                        <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" /> </Item>
-                        <button onClick ={()=>{addToWishlist(film.id)}}>Add to Wishlist</button>
-                        <RatingComponent addToWishlist = {addToWishlist} filmId = {film.id}/>
-                        
-                      </Grid>
+                return (
+                    <div className="film_container">
+                      <p>{film.title}</p>
+                      <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" className='film_poster'/>
+                      <button onClick ={()=>{addToWishlist(film.id)}}>Add to Wishlist</button>
+                      <RatingComponent addToWishlist = {addToWishlist} filmId = {film.id}/>
+                    </div>
                 )
             })
           }
@@ -60,11 +56,10 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist}) => {
     }
 
     return (
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={3}>
-          {mapFilms(listOfFilmsFromAPI)}
-        </Grid>
-      </Box>
+      <div className="search_results">
+        {mapFilms(listOfFilmsFromAPI)}
+        <button></button>
+      </div>
     );
 }
 

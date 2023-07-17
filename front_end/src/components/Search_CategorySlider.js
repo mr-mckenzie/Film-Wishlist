@@ -2,11 +2,14 @@ import * as React from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-export default function CategoryToggleButton({setSearchCategory, searchCategory}) {
+export default function CategoryToggleButton({setSearchCategory, searchCategory, setSearchQuery, setActors, setKeywords}) {
 
     const handleChange = (event, newSearchCategory) => {
         if (newSearchCategory !== null) {
             setSearchCategory(newSearchCategory);
+            setActors([]);
+            setKeywords([]);
+            setSearchQuery("");
           }
     };
 

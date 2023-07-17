@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ExternalServices from "../services/ExternalServices"
 import CategorySlider from "./Search_CategorySlider"
-import FilmCarousel from "./Search_SearchResults"
-import ClickableChips from "./Search_Chips"
+import Chips from "./Search_Chips"
+import TextField from '@mui/material/TextField';
 
 const SearchForm = ({setListOfFilmsFromAPI}) => {
 
@@ -32,23 +32,13 @@ const SearchForm = ({setListOfFilmsFromAPI}) => {
         }
     }
 
-    const handleNewCategory = (event) => {
-        setListOfFilmsFromAPI([])
-        setSearchQuery("")
-        setActors([])
-        setKeywords([])
-    }
-
     return (
-        <div>
-            <CategorySlider searchCategory={searchCategory} setSearchCategory={setSearchCategory} onClick={(handleNewCategory)}></CategorySlider>
-            <form onSubmit = {handleSubmit}> 
-                <input type="text" placeholder="search" onChange={handleChange} value={searchQuery}></input>
+            <form className="search_form" onSubmit = {handleSubmit}>
+                <CategorySlider searchCategory={searchCategory} setSearchCategory={setSearchCategory} setActors={setActors} setKeywords={setKeywords} setSearchQuery={setSearchQuery}/>
+                <TextField id="search" label="Search" variant="outlined" onChange={handleChange} value={searchQuery}/>
+                <Chips searchResults={actors} setListOfFilmsFromAPI={setListOfFilmsFromAPI} content={"actor"}/>
+                <Chips searchResults={keywords} setListOfFilmsFromAPI={setListOfFilmsFromAPI} content={"keyword"} />
             </form>
-            <ClickableChips searchResults={actors} setListOfFilmsFromAPI={setListOfFilmsFromAPI} actorOrKeyword={"actor"} />
-            <ClickableChips searchResults={keywords} setListOfFilmsFromAPI={setListOfFilmsFromAPI} actorOrKeyword={"keyword"} />
-
-        </div>
     )
 
 }

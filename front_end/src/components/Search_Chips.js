@@ -1,17 +1,33 @@
 import * as React from 'react';
 import Chip from '@mui/material/Chip';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import ExternalServices from '../services/ExternalServices';
 
-export default function ClickableChips({searchResults, setListOfFilmsFromAPI, actorOrKeyword}) {
+
+export default function Chips({searchResults, setListOfFilmsFromAPI, content}) {
 
     // returning chips with the result of our API search for Actor/Keyword
     const mapSearchResults = (resultsToMap) => {
         let mappedResults = []
         if (resultsToMap && resultsToMap.length > 0) {
             mappedResults = resultsToMap.map( result => {
+                
                 return (
-                    <button key={result.id} value={result.id} onClick={handleClick}>{result.name}</button>
+                    content==="actor" ? 
+
+                    <Button id={result.id} onClick={handleClick} variant="outlined">
+                        <Avatar src={ExternalServices.getFullActorImageURLByPath(result.profile_path)}/>
+                        {result.name}
+                    </Button> 
+                
+                :
+                
+                    <Button id={result.id} onClick={handleClick} variant="outlined">
+                    {result.name}
+                    </Button> 
+
                 )
             })
             }
@@ -20,21 +36,19 @@ export default function ClickableChips({searchResults, setListOfFilmsFromAPI, ac
 
 
   const handleClick = (event) => {
-    //DO API REQUEST HERE;
-    // event.target.variant="outlined"
-
-    if (actorOrKeyword == "actor"){
-    ExternalServices.getFilmsByActorId(event.target.value)
+    if (content == "actor"){
+    ExternalServices.getFilmsByActorId(event.target.id)
     .then(results => setListOfFilmsFromAPI(results))
-    } else if (actorOrKeyword == "keyword") {
-        ExternalServices.getFilmsByKeywordId(event.target.value)
+    } else if (content == "keyword") {
+        ExternalServices.getFilmsByKeywordId(event.target.id)
         .then(results => setListOfFilmsFromAPI(results))
     }
   };
 
+
   return (
-    <div>
+    <Stack className="chip_container" direction={"row"} spacing={1}>
         {mapSearchResults(searchResults)}
-    </div>
+    </Stack>
   );
 }

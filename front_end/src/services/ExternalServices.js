@@ -65,7 +65,7 @@ const ExternalServices = {
         }
       };
       
-   const resultFromFetch = fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_count.gte=100&with_cast=${actorId}&with_runtime.gte=60`, options)
+   const resultFromFetch = fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_count.gte=10&with_cast=${actorId}&with_runtime.gte=60`, options)
         .then(response => response.json())
         .then(response => response.results)
         .catch(err => console.error(err));
@@ -100,7 +100,7 @@ const ExternalServices = {
             }
           };
           
-       const resultFromFetch = fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_keywords=${keywordId}`, options)
+       const resultFromFetch = fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_count.gte=10&with_keywords=${keywordId}&with_runtime.gte=60`, options)
             .then(response => response.json())
             .then(response => response.results)
             .catch(err => console.error(err));
@@ -109,10 +109,17 @@ const ExternalServices = {
     },
 
 
-    getFullPosterURLByPath (Path) {
-      const baseURL = 'https://image.tmdb.org/t/p/w154'
-      return baseURL+Path
+    getFullPosterURLByPath (path) {
+      const baseURL = 'https://image.tmdb.org/t/p/w342'
+      return baseURL+path
+    },
+
+    getFullActorImageURLByPath (path) {
+      const baseURL = 'http://image.tmdb.org/t/p/w45'
+      return baseURL+path
     }
+
+    // availible poster sizes for ^^^^^^^ above route => ["w92", "w154", "w185", "w342", "w500", "w780", "original"]
 }
 
 export default ExternalServices;
