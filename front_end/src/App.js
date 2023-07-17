@@ -9,6 +9,7 @@ import Wishlist from './pages/Wishlist';
 import Ratings from './pages/Ratings';
 import Statistics from './pages/Statistics';
 import InternalServices, { postFilmToDatabase, getWishlistFilms } from './services/InternalServices.js'
+import { ClassNames } from '@emotion/react';
 
 
 function App() {
