@@ -47,7 +47,7 @@ const createRouter = function (collection) {
 
     
     // get films with rating NOT null
-    router.get('/rated', (request, response) => {
+    router.get('/wishlist', (request, response) => {
         collection.find({rating: {$ne: null}})
         .toArray()
         .then((docs) => response.json(docs))
@@ -57,6 +57,33 @@ const createRouter = function (collection) {
             response.json({status: 500, error: err})
         })
     })
+
+    //  get films with rating
+    router.get('/rating', (request, response) => {
+        collection.find({rating: { "$gt": 0, '$lt': 6}})
+        .toArray()
+        .then((docs) => response.json(docs))
+        .catch((err) => {
+            console.error(err)
+            response.status(500)
+            response.json({status: 500, error: err})
+        })
+    }    )
+
+    // delete films from ratedFilms
+    router.delete('/rating/:id', (request, response) => {
+        const id = request.params.id;
+        collection
+            .deleteOne({ _id: ObjectID(id)})
+            .then(result => {
+                response.json(result)
+            })
+            .catch((err) => {
+                console.error(err)
+                response.status(500)
+                response.json({status: 500, error: err})
+            }) 
+        })
 
 
     // router.put('/:id', (req, res) => {

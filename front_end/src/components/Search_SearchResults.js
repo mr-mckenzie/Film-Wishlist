@@ -19,7 +19,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 // this is the main function in this folder
-const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist}) => {
+const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRatedFilms}) => {
 
     // adding the rating key value pair to api output
     const addRatingKeyValuePair = (filmWithAddedRating, rating = null) => {
@@ -27,13 +27,23 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist}) => {
         return filmWithAddedRating
     }
     
-    // attempting to add films to a wishlist
+    // add film to a wishlist
     const addToWishlist = (filmIdToAddToWishlist, rating = null) => {
         ExternalServices.getFilmById(filmIdToAddToWishlist)
         .then(wishlistFilm => { 
             const wishlistFilmWithRating = addRatingKeyValuePair(wishlistFilm, rating)
             InternalServices.postFilmToDatabase(wishlistFilmWithRating)
             setWishlist([...wishlist, wishlistFilmWithRating])
+        })
+    }
+
+    // add film to a rated films list
+    const addToRatedFilms = (filmIdToAddToRatedFilms, rating) => {
+        ExternalServices.getFilmById(filmIdToAddToRatedFilms)
+        .then(ratedFilm => { 
+            const ratedFilmWithRating = addRatingKeyValuePair(ratedFilm, rating)
+            InternalServices.postFilmToDatabase(ratedFilmWithRating)
+            setRatedFilms([...ratedFilms, ratedFilmWithRating])
         })
     }
 
@@ -47,7 +57,7 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist}) => {
                       <p>{film.title}</p>
                       <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" className='film_poster'/>
                       <button onClick ={()=>{addToWishlist(film.id)}}>Add to Wishlist</button>
-                      <RatingComponent addToWishlist = {addToWishlist} filmId = {film.id}/>
+                      <RatingComponent addToRatedFilms = {addToRatedFilms} filmId = {film.id}/>
                     </div>
                 )
             })

@@ -36,8 +36,14 @@ const InternalServices = {
     },
 
     getRatedFilms(){
-        return fetch(baseURL + '/rated')
+        return fetch(baseURL + '/rating')
         .then (response => response.json())
+    },
+
+    deleteRatedFilm(id) {
+        return fetch(baseURL +'/rating/'+ id, {
+            method:'DELETE'
+        })
     },
 
     updateChosenFilm(id) {
