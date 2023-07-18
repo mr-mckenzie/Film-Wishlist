@@ -72,7 +72,21 @@ const InternalServices = {
                     delete actorCounterObject[key]
                 }
             }
-        console.log(actorCounterObject)},
+
+            const actorArray = []
+
+        //     for (const [key, value] of Object.entries(actorCounterObject)) {
+        //         let total = 0
+        //         const filmsWatched = value.size
+        //         const totalRating = (
+        //             for (const index of value) {
+        //                 total += value[index]
+        //             }
+
+        //         )
+        //         actorArray.push([key,filmsWatched,averageRating])
+            // }
+        console.log(actorArray)},
 
         //MOVE THIS FUNCTION TO STATS PAGE?
         getGenresInList (list) {

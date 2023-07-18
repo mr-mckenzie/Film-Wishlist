@@ -22,8 +22,10 @@ const Item = styled(Paper)(({ theme }) => ({
 const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRatedFilms}) => {
 
     // adding the rating key value pair to api output
-    const addRatingKeyValuePair = (filmWithAddedRating, rating = null) => {
+    //ALSO deletes crew from object
+    const addRatingKeyValuePairAndDeleteCrew = (filmWithAddedRating, rating = null) => {
         filmWithAddedRating["rating"] = rating
+        delete filmWithAddedRating["credits"]["crew"]
         return filmWithAddedRating
     }
     
@@ -31,7 +33,7 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRat
     const addToWishlist = (filmIdToAddToWishlist, rating = null) => {
         ExternalServices.getFilmById(filmIdToAddToWishlist)
         .then(wishlistFilm => { 
-            const wishlistFilmWithRating = addRatingKeyValuePair(wishlistFilm, rating)
+            const wishlistFilmWithRating = addRatingKeyValuePairAndDeleteCrew(wishlistFilm, rating)
             InternalServices.postFilmToDatabase(wishlistFilmWithRating)
             setWishlist([...wishlist, wishlistFilmWithRating])
         })
@@ -41,7 +43,7 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRat
     const addToRatedFilms = (filmIdToAddToRatedFilms, rating) => {
         ExternalServices.getFilmById(filmIdToAddToRatedFilms)
         .then(ratedFilm => { 
-            const ratedFilmWithRating = addRatingKeyValuePair(ratedFilm, rating)
+            const ratedFilmWithRating = addRatingKeyValuePairAndDeleteCrew(ratedFilm, rating)
             InternalServices.postFilmToDatabase(ratedFilmWithRating)
             setRatedFilms([...ratedFilms, ratedFilmWithRating])
         })
