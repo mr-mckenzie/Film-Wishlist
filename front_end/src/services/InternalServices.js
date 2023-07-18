@@ -56,6 +56,7 @@ const InternalServices = {
         //MAYBE MOVE THIS FUNCTION TO STATS PAGE?
         getActorsInList (list) {
             let actorCounterObject = {}
+            if (list.length > 0){
             for (const film of list) {
                 for (const castMember of film.credits.cast) {
                     //MAYBE CHANGE THIS TO ACTOR ID INSTEAD OF NAME?
@@ -72,21 +73,56 @@ const InternalServices = {
                     delete actorCounterObject[key]
                 }
             }
+}
+            return actorCounterObject
+        },
 
-            const actorArray = []
+        sortByRating (object) {
 
-        //     for (const [key, value] of Object.entries(actorCounterObject)) {
-        //         let total = 0
-        //         const filmsWatched = value.size
-        //         const totalRating = (
-        //             for (const index of value) {
-        //                 total += value[index]
-        //             }
+            const arrayForSorting = [];
+            for (const [key, value] of Object.entries(object)) {
+                console.log("key", key)
+                console.log("value", value)
 
-        //         )
-        //         actorArray.push([key,filmsWatched,averageRating])
-            // }
-        console.log(actorArray)},
+                const numberOfRatings = value.length
+
+                let sumOfRatings = 0
+                for (let i = 0; i<value.length; i++) {
+                    sumOfRatings = sumOfRatings + value[i]
+                }
+
+                const averageRating = sumOfRatings/numberOfRatings
+
+                //Key = name, value = array of individual ratings
+                arrayForSorting.push([key, value, numberOfRatings, averageRating]);
+            }
+            
+            console.log("Array for Sorting:", arrayForSorting)
+
+            const sortingFunction = (a, b) => {
+                if (a[3] > b[3]) {
+                    return -1
+                } else if (a[3] < b[3]) {
+                    return 1
+                } else if (a[2] > b[2]) {
+                    return -1 
+                } else if (a[2] < b[2]) {
+                    return 1
+                } else {
+                    return 0
+                }
+            }
+
+            let sortedArray = arrayForSorting.sort(sortingFunction)
+
+            return sortedArray
+        },
+
+        getArrayOfActorsSortedByRating (list) {
+            const actorsObject = this.getActorsInList(list)
+            const arrayOfActorsSortedByRating = this.sortByRating(actorsObject)
+            return arrayOfActorsSortedByRating
+        },
 
         //MOVE THIS FUNCTION TO STATS PAGE?
         getGenresInList (list) {
