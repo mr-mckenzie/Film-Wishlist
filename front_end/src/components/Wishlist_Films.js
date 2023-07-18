@@ -27,7 +27,6 @@ const WishlistFilms = ({wishlist, setWishlist}) => {
             <h1>{film.title}</h1>
             <p>Average rating: {film.vote_average}</p>
             <p>{film.overview}</p>
-            <br></br>
         </div>
     )
 

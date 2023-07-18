@@ -1,9 +1,5 @@
-import Grid from '@mui/material/Unstable_Grid2';
-import Box from '@mui/material/Box';
 import ExternalServices
 from '../services/ExternalServices';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
 import InternalServices from '../services/InternalServices';
 import Rating from '@mui/material/Rating';
 
@@ -25,44 +21,30 @@ const RatedFilms = ({ratedFilms, setRatedFilms}) => {
     }
 
     // to do with on page styling
-    const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-        ...theme.typography.body2,
-        padding: theme.spacing(1),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    }));
+    // const Item = styled(Paper)(({ theme }) => ({
+    //     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    //     ...theme.typography.body2,
+    //     padding: theme.spacing(1),
+    //     textAlign: 'center',
+    //     color: theme.palette.text.secondary,
+    // }));
 
-  
     
 
     const ratedFilmsDisplay = ratedFilms.map((film) => 
-    <div key = {film.id} class="ratings_films">
-        <ul class="ratings_carousel">
-        <Grid>
-            <Item>
-                <li class = "ratings_card">
-                    <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" class="ratings_poster_image"/>
-                    <h1>{film.title}</h1>
-                    <p>Average rating: {film.vote_average}</p>
-                    <p>{film.overview}</p>
-                    <Rating name="read-only" value={film.rating} readOnly />
-                    <button value = {film._id} onClick ={handleClickDeleteRatedFilm}>Remove from rated films</button>
-                </li>
-            </Item>
-        </Grid>
-        </ul>
-    </div>
+        <div key = {film.id} className="ratings_card">
+            <Rating name="read-only" value={film.rating} readOnly />
+            <button className="ratings_button" value = {film._id} onClick ={handleClickDeleteRatedFilm}>Remove from rated films</button>
+            <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" class="ratings_poster_image"/>
+            <h1>{film.title}</h1>
+            <p>Average rating: {film.vote_average}</p>
+            <p>{film.overview}</p>
+            <Rating name="read-only" value={film.rating} readOnly />
+        </div>
 )
 
     return (
-        // <Box sx={{flexGrow:1}}>
-        //     <Grid container spacing={3}>
-        <div>
-                <ul>{ratedFilmsDisplay}</ul>
-        </div> 
-            // </Grid> 
-        // </Box>
+                <div className="ratings_container">{ratedFilmsDisplay}</div>
     )
 }
 
