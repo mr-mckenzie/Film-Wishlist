@@ -58,24 +58,43 @@ const InternalServices = {
             let actorCounterObject = {}
             for (const film of list) {
                 for (const castMember of film.credits.cast) {
+                    //MAYBE CHANGE THIS TO ACTOR ID INSTEAD OF NAME?
                     if (actorCounterObject[castMember.name]) {
-                        actorCounterObject[castMember.name] += 1
+                        actorCounterObject[castMember.name].push(film.rating)
                     } else {
-                        actorCounterObject[castMember.name] = 1
+                        actorCounterObject[castMember.name] = [film.rating]
                     }
                 }
             }
-            console.log(Object.keys(actorCounterObject))
-            console.log(Object.values(actorCounterObject))
-
 
             for (const [key, value] of Object.entries(actorCounterObject)) {
-                if (value == 1) {
+                if (value.length == 1) {
                     delete actorCounterObject[key]
                 }
-
             }
-        console.log(actorCounterObject)}
+        console.log(actorCounterObject)},
+
+        //MOVE THIS FUNCTION TO STATS PAGE?
+        getGenresInList (list) {
+            let genreCounterObject = {}
+            for (const film of list) {
+                for (const genre of film.genres) {
+                    //MAYBE CHANGE THIS TO GENRE ID INSTEAD OF NAME?
+                    if (genreCounterObject[genre.name]) {
+                        genreCounterObject[genre.name].push(film.rating)
+                    } else {
+                        genreCounterObject[genre.name] = [film.rating]
+                        
+                    }
+                }
+            }
+
+            for (const [key, value] of Object.entries(genreCounterObject)) {
+                if (value.length == 1) {
+                    delete genreCounterObject[key]
+                }
+            }
+        console.log(genreCounterObject)}
 
 }
 export default InternalServices
