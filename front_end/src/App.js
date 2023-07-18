@@ -28,7 +28,7 @@ function App() {
 
     // populating rated list from database
     useEffect(() => { InternalServices.getRatedFilms()
-        .then(wishlistFilms => setRatedFilms(wishlistFilms))
+        .then(ratedFilms => setRatedFilms(ratedFilms))
     },[])
 
 

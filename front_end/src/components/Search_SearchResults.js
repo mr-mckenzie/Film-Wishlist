@@ -45,8 +45,10 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRat
             InternalServices.postFilmToDatabase(ratedFilmWithRating)
             setRatedFilms([...ratedFilms, ratedFilmWithRating])
         })
-        InternalServices.getActorsInList(ratedFilms)
     }
+
+    InternalServices.getGenresInList(ratedFilms)
+    InternalServices.getActorsInList(ratedFilms)
 
     // returning a grid of film titles and posters
     const mapFilms = (filmsToMap) => {
