@@ -1,11 +1,22 @@
 .wishlist_card {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     height: 30%;
-    width: 30%;
+    width: 30%; */
+    background-color: blueviolet;
 }
 
 .wishlist_container{
+    /* margin: 1%; */
     display: flex;
     flex-direction: row;
+    /* flex-wrap: wrap; */
+    height: 95%;
+    width: 20%;
+    background-color:lightskyblue;
+    padding: 1%;
+    /* align-items: center; */
+}
+.wishlist_poster_image{
+    width: 80%
 }
