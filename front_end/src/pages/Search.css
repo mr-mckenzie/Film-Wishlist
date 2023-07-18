@@ -3,6 +3,8 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
+    background: linear-gradient(135deg,#d41e31,#491f8f);
+
 }
 
 .search_form{
