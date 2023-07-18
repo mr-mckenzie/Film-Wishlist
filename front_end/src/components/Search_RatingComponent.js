@@ -3,13 +3,13 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
 
-const RatingComponent = ({addToRatedFilms, filmId, keyword}) => {
+const RatingComponent = ({addToRatedFilms, filmId}) => {
 
 const [value, setValue] = React.useState(null)
 
 
 React.useEffect(() => 
-setValue(null), filmId)
+setValue(null), [filmId])
 
 return (
     <div>

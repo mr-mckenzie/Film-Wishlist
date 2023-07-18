@@ -1,6 +1,5 @@
-import { useEffect } from "react"
-import InternalServices from "../services/InternalServices"
-import { BarChart, Bar, XAxis, YAxis } from "recharts";
+import StatisticsFunctions from "../services/StatisticsFunctions"
+import { BarChart, Bar, XAxis} from "recharts";
 
 const TopRatedActors = ({ratedFilms}) => {
 
@@ -10,7 +9,7 @@ const TopRatedActors = ({ratedFilms}) => {
 
         if (filmList.length > 0) {
             console.log("RATED FILMS", filmList)
-            const actorArray = InternalServices.getArrayOfActorsSortedByRating(filmList)
+            const actorArray = StatisticsFunctions.getArrayOfActorsByRating(filmList)
             console.log("ACTOR ARRAY", actorArray)
             for (const actor of actorArray) {
                 data.push({"name":actor[0], "rating":actor[3], "films":actor[2]})
