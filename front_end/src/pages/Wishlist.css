@@ -1,10 +1,22 @@
 .wishlist_page{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
     height: 100%;
-    /* background: linear-gradient(135deg,#d41e31,#491f8f); */
+}
+
+.wishlist_page > h1 {
+    color: #111; 
+    font-family: 'Nunito Sans', sans-serif; 
+    font-size: 150px; 
+    font-weight: bold; 
+    letter-spacing: -1px; 
+    line-height: 1; 
+    text-align: left;
 }
 
 .wishlist_container{
@@ -31,36 +43,85 @@
      */
     /* align-items: center; */
 }
-.wishlist_button{ position: sticky; 
-cursor: pointer;}
+.wishlist_button{ 
+    position: sticky; 
+    cursor: pointer;
+}
 
 
 .wishlist_card {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 30%;
-    background-color: blueviolet;
-    margin: 1%;
-    margin: 10px;
-    display: flex;
-    flex-wrap: nowrap;
+    margin: 0px 10px 10px 10px;
+    /* flex-wrap: nowrap; */
     height: 500px;
     width: 320px;
-    background-color:rgb(255, 255, 255, 0.4);
     align-items: center;
+    /* overflow: hidden; */
     border-radius: 20px;
     text-align: center;
+    border: solid black;
+    position: relative;
 }
+
+.wishlist_card:hover > .wishlist_card_body{
+    position: relative;
+}
+
+
+.wishlist_card_body{
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    right: 0;
+    position: relative;
+    background: teal;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: 2s;
+    
+}
+
+.wishlist_card_body > h1 {
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.wishlist_card_body > p {
+    /* visibility: hidden; */
+    font-size:15px;
+    font-weight: 400;
+}
+
+.wishlist_button{
+    /* padding:10px */
+    background-color: pink;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+    /* transition: all 0.2s ease; */
+}
+
+.wishlist_button:active {
+    transform: scale(0.96)
+}
+
 
 /* .wishlist_card:hover{
     transition: 200ms
 
 }
 
-.wishlist_card > p {
-    visibility: hidden;
-}
+
 
 .wishlist_card:hover {
     visibility: visable;
@@ -81,7 +142,9 @@ cursor: pointer;}
 .wishlist_poster_image{
     height: 100%;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 15px;
+    object-fit: cover;
+    opacity: 0.1;
     
 }
 

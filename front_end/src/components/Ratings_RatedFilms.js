@@ -33,13 +33,14 @@ const RatedFilms = ({ratedFilms, setRatedFilms}) => {
 
     const ratedFilmsDisplay = ratedFilms.map((film) => 
         <div key = {film.id} className="ratings_card">
-            <Rating name="read-only" value={film.rating} readOnly />
             <button className="ratings_button" value = {film._id} onClick ={handleClickDeleteRatedFilm}>Remove from rated films</button>
             <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" class="ratings_poster_image"/>
-            <h1>{film.title}</h1>
-            <p>Average rating: {film.vote_average}</p>
-            <p>{film.overview}</p>
-            <Rating name="read-only" value={film.rating} readOnly />
+            <div className="wishlist_card_body">
+                <h1>{film.title}</h1>
+                <p>Average rating: {film.vote_average}</p>
+                <p>{film.overview}</p>
+                <Rating className="rating" name="read-only" value={film.rating} readOnly />
+            </div>
         </div>
 )
 

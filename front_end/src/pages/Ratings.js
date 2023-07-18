@@ -4,7 +4,7 @@ import './Ratings.css'
 
 const Ratings = ({ratedFilms, setRatedFilms}) => (
     <div class="ratings_page">
-        <h4>Ratings</h4>
+        <h1>Ratings</h1>
         <RatedFilms ratedFilms = {ratedFilms} setRatedFilms = {setRatedFilms}/>
     </div>
 )

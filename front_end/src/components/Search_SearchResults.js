@@ -70,7 +70,6 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRat
     return (
         <div className="search_container">
             {mapFilms(listOfFilmsFromAPI)}
-            <button></button>
         </div>
     );
 }
