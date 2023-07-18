@@ -58,9 +58,9 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRat
         if (filmsToMap && filmsToMap.length > 0) {
             mappedFilms = filmsToMap.map( film => {
                 return (
-                    <div className="film_container">
+                    <div className="search_card">
                         <p>{film.title}</p>
-                        <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" className='film_poster'/>
+                        <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" className='search_poster_image'/>
                         <button onClick ={()=>{addToWishlist(film.id)}}>Add to Wishlist</button>
                         <RatingComponent addToRatedFilms = {addToRatedFilms} filmId = {film.id}/>
                     </div>
@@ -71,7 +71,7 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRat
     }
 
     return (
-        <div className="search_results">
+        <div className="search_container">
             {mapFilms(listOfFilmsFromAPI)}
             <button></button>
         </div>
