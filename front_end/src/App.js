@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import Fullpage,{ FullPageSections, FullpageSection, FullpageNavigation } from "@ap.cx/react-fullpage";
 import './App.css';
 
-import Home from './pages/Home';
+
+// import Home from './pages/Home';
 import Search from './pages/Search';
-import Recommendations from './pages/Recommendations';
+// import Recommendations from './pages/Recommendations';
 import Wishlist from './pages/Wishlist';
 import Ratings from './pages/Ratings';
 import Statistics from './pages/Statistics';
@@ -43,9 +44,9 @@ function App() {
     <Fullpage>
         <FullpageNavigation/>
         <FullPageSections>
-            <FullpageSection style={SectionStyle}>
+            {/* <FullpageSection style={SectionStyle}>
                 <Home/>
-            </FullpageSection>
+            </FullpageSection> */}
             <FullpageSection style={SectionStyle}>
                 <Search 
                 listOfFilmsFromAPI={listOfFilmsFromAPI} 
@@ -56,9 +57,9 @@ function App() {
                 setRatedFilms = {setRatedFilms}
                 />
             </FullpageSection>
-            <FullpageSection style={SectionStyle}>
+            {/* <FullpageSection style={SectionStyle}>
                 <Recommendations/>
-            </FullpageSection>
+            </FullpageSection> */}
             <FullpageSection style={SectionStyle}>
                 <Wishlist 
                 wishlist={wishlist} 

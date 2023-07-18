@@ -35,7 +35,7 @@ const SearchForm = ({setListOfFilmsFromAPI}) => {
             <form className="search_form" onSubmit = {handleSubmit}>
                 <CategorySlider searchCategory={searchCategory} setSearchCategory={setSearchCategory} setActors={setActors} setKeywords={setKeywords} setSearchQuery={setSearchQuery}/>
                 <TextField id="search" label="Search" variant="outlined" onChange={handleChange} value={searchQuery}/>
-                <Chips searchResults={actors} setListOfFilmsFromAPI={setListOfFilmsFromAPI} content={"actor"}/>
+                <Chips className="chips" searchResults={actors} setListOfFilmsFromAPI={setListOfFilmsFromAPI} content={"actor"}/>
                 <Chips searchResults={keywords} setListOfFilmsFromAPI={setListOfFilmsFromAPI} content={"keyword"} />
             </form>
     )

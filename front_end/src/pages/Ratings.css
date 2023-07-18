@@ -1,17 +1,27 @@
 .ratings_page{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
     height: 100%;
-    /* background: linear-gradient(135deg,#d41e31,#491f8f); */
+}
+
+.ratings_page > h1 {
+    color: #111; 
+    font-family: 'Nunito Sans', sans-serif; 
+    font-size: 150px; 
+    font-weight: bold; 
+    letter-spacing: -1px; 
+    line-height: 1; 
+    text-align: left;
 }
 
 .ratings_container{
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-auto-flow: column;
     overflow-x: scroll;
     overflow-y: hidden;
     top: 5%;
@@ -19,26 +29,61 @@
     height: 100%;
 }
 
-.ratings_button{ position: sticky; }
+.ratings_button{ 
+    position: sticky; 
+    cursor: pointer;
+}
     
 
 .ratings_card{
-    margin: 1%;
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
-    height: 85%;
-    width: 30%;
-    background-color:rgb(255, 255, 255, 0.4);
-    padding: 1%;
+    margin: 0px 10px 10px 10px;
+    height: 500px;
+    width: 320px;
     align-items: center;
-    border: thick solid #bebec3;
+    /* overflow: hidden; */
     border-radius: 20px;
     text-align: center;
+    border: solid black;
+    position: relative;
     
 } 
 
+.ratings_card_body{
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    right: 0;
+    position: relative;
+    background: teal;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: 2s;
+}
+
+.ratings_card_body > h1 {
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.rating{
+    justify-content: center;
+}
+
+.ratings_card > p {
+    visibility: hidden;
+    font-size: 16px;
+    font-weight: 400;
+}
+
 .ratings_poster_image{
-    height: 50%;
-    width: max-content;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+    opacity: 0.1;
 } 

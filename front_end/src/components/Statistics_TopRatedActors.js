@@ -23,11 +23,14 @@ const TopRatedActors = ({ratedFilms}) => {
     console.log("DATA", data)
 
     return (
-        <BarChart width={1400} height={400} data={data.slice(0,10)}>
-            <XAxis dataKey={"name"}/>
-            <Bar dataKey="rating" fill="blue" label={{position:'top'}}/>
-            <Bar dataKey="films" fill="skyblue" label={{position:'top'}}/>
-        </BarChart>
+        <div>
+            <BarChart width={1400} height={400} data={data.slice(0,10)}>
+                <XAxis dataKey={"name"}/>
+                <Bar dataKey="rating" fill="blue" label={{position:'top'}}/>
+                <Bar dataKey="films" fill="skyblue" label={{position:'top'}}/>
+            </BarChart>
+            <p>actor bar chart, something here to describe?</p>
+        </div>
     )
 }
 export default TopRatedActors
