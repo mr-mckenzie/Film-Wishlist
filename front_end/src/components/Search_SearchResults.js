@@ -49,9 +49,6 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRat
         })
     }
 
-    InternalServices.getGenresInList(ratedFilms)
-    InternalServices.getActorsInList(ratedFilms)
-
     // returning a grid of film titles and posters
     const mapFilms = (filmsToMap) => {
         let mappedFilms = []

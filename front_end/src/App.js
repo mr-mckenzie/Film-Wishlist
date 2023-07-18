@@ -71,7 +71,8 @@ function App() {
                 />
             </FullpageSection>
             <FullpageSection style={SectionStyle}>
-                <Statistics/>
+                <Statistics
+                    ratedFilms={ratedFilms}/>
             </FullpageSection>
         </FullPageSections>
     </Fullpage>

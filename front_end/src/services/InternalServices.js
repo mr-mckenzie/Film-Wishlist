@@ -56,6 +56,7 @@ const InternalServices = {
         //MAYBE MOVE THIS FUNCTION TO STATS PAGE?
         getActorsInList (list) {
             let actorCounterObject = {}
+            if (list.length > 0){
             for (const film of list) {
                 for (const castMember of film.credits.cast) {
                     //MAYBE CHANGE THIS TO ACTOR ID INSTEAD OF NAME?
@@ -72,7 +73,7 @@ const InternalServices = {
                     delete actorCounterObject[key]
                 }
             }
-
+}
             return actorCounterObject
         },
 
