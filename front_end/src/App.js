@@ -5,7 +5,7 @@ import './App.css';
 
 // import Home from './pages/Home';
 import Search from './pages/Search';
-import Recommendations from'./pages/unused/Recommendations';
+// import Recommendations from'./pages/unused/Recommendations';
 import Wishlist from './pages/Wishlist';
 import Ratings from './pages/Ratings';
 import Statistics from './pages/Statistics';
@@ -74,9 +74,6 @@ function App() {
             <FullpageSection style={SectionStyle}>
                 <Statistics
                     ratedFilms={ratedFilms}/>
-            </FullpageSection>
-            <FullpageSection style={SectionStyle}>
-                <Recommendations/>
             </FullpageSection>
         </FullPageSections>
     </Fullpage>

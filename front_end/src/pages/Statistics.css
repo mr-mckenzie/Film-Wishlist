@@ -36,15 +36,16 @@
     height: 500px;
     width: 320px;
     margin: 0px 10px 10px 10px;
-    align-items: center;
-    overflow: hidden;
     border-radius: 20px;
     border: solid black;
-    box-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     position: relative;
-    background: linear-gradient(100deg,rgb(195, 212, 241),rgb(165, 246, 219));
-    color: black;
-}
+    /* background: rgb(90, 90, 90); */
+    background: #48ab6e;
+    overflow: hidden;    
+    box-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    /* background: linear-gradient(100deg,rgb(195, 212, 241),rgb(165, 246, 219)); */
+    }
+
 
 .stats_card_body{
     height: 500px;
@@ -53,14 +54,41 @@
     text-align: center;
     display: flex;
     flex-direction: column;
+    opacity: 1
 }
 
 .stats_card_body > h1{
-    font-weight: 500; 
-    color: black;
+    font-weight: 900; 
+    color: rgb(255, 255, 255);
+    text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .stats_card_body > p {
     font-weight: 300; 
-    color: black;
+    color: white;
+    text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+
+.MuiAvatar-root {
+    scale: 1.4;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+
+
+.stats_poster_image{
+    height: 500px;
+    width: 320px;
+    background-color: #57D086;
+    position: absolute;
+    border-radius: 15px;
+    object-fit: cover;
+    opacity: 0.3;
+    overflow: hidden;
+    background: url(./../../images/image1.jpg);
+    filter:blur(5px)
 }

@@ -21,7 +21,7 @@ const RatedFilmsInfo = ({ratedFilms}) => {
             return (element[4][0] ? 
             <p><Avatar src={ExternalServices.getFullActorImageURLByPath( element[4] )}/> {element[0]} - {element[2]}</p> 
             :
-            <p> {element[0]} - {element[2]}</p>
+            <p className="statistics_fact"> {element[0]} - {element[2]}</p>
             )
         } )
     }
@@ -35,14 +35,16 @@ const RatedFilmsInfo = ({ratedFilms}) => {
         } )
     }
 
-    const maxNumberOfEntries = 15
+    const maxNumberOfEntries = 8
+    const maxNumberOfEntriesActor = 4
 
     return (
 
         <div className="statistics_container">
             <div className="stats_card">
+                <div className="stats_poster_image"></div>
                 <div className="stats_card_body">
-                    <p>Films watched: {ratedFilms.length} </p>
+                    <h1>Films watched: {ratedFilms.length} </h1>
                     <p>Total minutes watched: {StatisticsFunctions.getTotalRuntime(ratedFilms)}</p>
                     <p>Total hours watched: {Math.round((StatisticsFunctions.getTotalRuntime(ratedFilms)*100) / 60)/100}</p>
                 </div>
@@ -50,20 +52,23 @@ const RatedFilmsInfo = ({ratedFilms}) => {
                 { ratedFilms.length > 0 ? 
                 <>
                 <div className = "stats_card">
+                    <div className="stats_poster_image"></div>
                     <div className="stats_card_body">
                         <h1>Most watched actors:</h1> 
-                        {mapMostWatched(mostWatchedActors.slice(0,maxNumberOfEntries))}
+                        {mapMostWatched(mostWatchedActors.slice(0,maxNumberOfEntriesActor))}
                     </div> 
                 </div>
 
                 <div className = "stats_card">
+                    <div className="stats_poster_image"></div>
                     <div className="stats_card_body">
                         <h1>Highest rated actors: </h1> 
-                        {mapHighestRated(highestRatedActors.slice(0,maxNumberOfEntries))}
+                        {mapHighestRated(highestRatedActors.slice(0,maxNumberOfEntriesActor))}
                     </div>
                 </div>
 
                 <div className = "stats_card">
+                    <div className="stats_poster_image"></div>
                     <div className="stats_card_body">
                         <h1>Most watched genres:</h1> 
                         {mapMostWatched(mostWatchedGenres.slice(0,maxNumberOfEntries))}
@@ -71,6 +76,7 @@ const RatedFilmsInfo = ({ratedFilms}) => {
                 </div>
 
                 <div className = "stats_card">
+                    <div className="stats_poster_image"></div>
                     <div className="stats_card_body">
                         <h1>Highest rated genres: </h1> 
                         {mapHighestRated(highestRatedGenres.slice(0,maxNumberOfEntries))}
@@ -78,6 +84,7 @@ const RatedFilmsInfo = ({ratedFilms}) => {
                 </div>
 
                 <div className = "stats_card">
+                    <div className="stats_poster_image"></div>
                     <div className="stats_card_body">
                         <h1>Most watched keywords:</h1> 
                         {mapMostWatched(mostWatchedKeywords.slice(0,maxNumberOfEntries))}
@@ -85,6 +92,7 @@ const RatedFilmsInfo = ({ratedFilms}) => {
                 </div>
 
                 <div className = "stats_card">
+                    <div className="stats_poster_image"></div>
                     <div className="stats_card_body">
                         <h1>Highest rated keywords: </h1> 
                         {mapHighestRated(higestRatedKeywords.slice(0,maxNumberOfEntries))}
@@ -92,6 +100,7 @@ const RatedFilmsInfo = ({ratedFilms}) => {
                 </div> 
 
                 <div className = "stats_card">
+                    <div className="stats_poster_image"></div>
                     <div className = "stats_card_body">
                         <h1>Most watched countries:</h1> 
                         {mapMostWatched(mostWatchedCountries.slice(0,maxNumberOfEntries))}
@@ -99,6 +108,7 @@ const RatedFilmsInfo = ({ratedFilms}) => {
                 </div>
 
                 <div className = "stats_card">
+                    <div className="stats_poster_image"></div>
                     <div className="stats_card_body">
                         <h1>Highest rated countries: </h1> 
                         {mapHighestRated(highestRatedCountries.slice(0,maxNumberOfEntries))}
@@ -106,6 +116,7 @@ const RatedFilmsInfo = ({ratedFilms}) => {
                 </div> 
 
                 <div className = "stats_card">
+                    <div className="stats_poster_image"></div>
                     <div className="stats_card_body">
                         <h1>Most watched languages:</h1> 
                         {mapMostWatched(mostWatchedLanguages.slice(0,maxNumberOfEntries))}
@@ -113,6 +124,7 @@ const RatedFilmsInfo = ({ratedFilms}) => {
                 </div>
 
                 <div className = "stats_card">
+                    <div className="stats_poster_image"></div>
                     <div className="stats_card_body">
                         <h1>Highest rated languages: </h1> 
                         {mapHighestRated(highestRatedLanguages.slice(0,maxNumberOfEntries))}
