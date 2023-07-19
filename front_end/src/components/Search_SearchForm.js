@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import ExternalServices from "../services/ExternalServices"
 import CategorySlider from "./Search_CategorySlider"
 import Chips from "./Search_Actor_Keyword_Button"
@@ -33,10 +33,10 @@ const SearchForm = ({setListOfFilmsFromAPI}) => {
 
     return (
             <form className="search_form" onSubmit = {handleSubmit}>
-                <CategorySlider searchCategory={searchCategory} setSearchCategory={setSearchCategory} setActors={setActors} setKeywords={setKeywords} setSearchQuery={setSearchQuery}/>
-                <TextField id="search" label="Search" variant="outlined" onChange={handleChange} value={searchQuery}/>
-                <Chips className="chips" searchResults={actors} setListOfFilmsFromAPI={setListOfFilmsFromAPI} content={"actor"}/>
-                <Chips searchResults={keywords} setListOfFilmsFromAPI={setListOfFilmsFromAPI} content={"keyword"} />
+                <CategorySlider className="search_category" searchCategory={searchCategory} setSearchCategory={setSearchCategory} setActors={setActors} setKeywords={setKeywords} setSearchQuery={setSearchQuery} setListOfFilmsFromAPI={setListOfFilmsFromAPI}/>
+                <TextField className="search_bar" id="search" label="Search" variant="outlined" onChange={handleChange} value={searchQuery}/>
+                <Chips className="search_chips" searchResults={actors} setListOfFilmsFromAPI={setListOfFilmsFromAPI} content={"actor"}/>
+                <Chips className="search_chips" searchResults={keywords} setListOfFilmsFromAPI={setListOfFilmsFromAPI} content={"keyword"} />
             </form>
     )
 

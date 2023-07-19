@@ -2,7 +2,7 @@ import * as React from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-export default function CategoryToggleButton({setSearchCategory, searchCategory, setSearchQuery, setActors, setKeywords}) {
+export default function CategoryToggleButton({setSearchCategory, searchCategory, setSearchQuery, setActors, setKeywords, setListOfFilmsFromAPI}) {
 
     const handleChange = (event, newSearchCategory) => {
         if (newSearchCategory !== null) {
@@ -10,6 +10,7 @@ export default function CategoryToggleButton({setSearchCategory, searchCategory,
             setActors([]);
             setKeywords([]);
             setSearchQuery("");
+            setListOfFilmsFromAPI([])
           }
     };
 
