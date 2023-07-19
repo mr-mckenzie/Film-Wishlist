@@ -44,10 +44,10 @@ const RatedFilmsInfo = ({ratedFilms}) => {
                 <div className="stats_card_body">
                     <p>Films watched: {ratedFilms.length} </p>
                     <p>Total minutes watched: {StatisticsFunctions.getTotalRuntime(ratedFilms)}</p>
-                    <p>Total hours watched: {StatisticsFunctions.getTotalRuntime(ratedFilms) / 60}</p>
+                    <p>Total hours watched: {Math.round((StatisticsFunctions.getTotalRuntime(ratedFilms)*100) / 60)/100}</p>
                 </div>
             </div>
-                { ratedFilms.length>0 ? 
+                { ratedFilms.length > 0 ? 
                 <>
                 <div className = "stats_card">
                     <div className="stats_card_body">
