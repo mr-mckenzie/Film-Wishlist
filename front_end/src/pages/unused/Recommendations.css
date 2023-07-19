@@ -1,0 +1,23 @@
+.container_div{
+    height: 500px;
+    width: 320px;
+}
+
+.base_div{
+    height: 500px;
+    width: 320px;
+    background-color: red;
+    position: absolute;
+}
+
+.top_div{
+    height: 500px;
+    width: 320px;
+    background-color: green;
+    position: absolute;
+}
+
+.container_div:hover > .top_div{
+    visibility: hidden;
+}
+
