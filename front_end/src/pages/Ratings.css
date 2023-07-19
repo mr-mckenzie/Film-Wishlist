@@ -73,7 +73,7 @@
 .ratings_poster_image{
     height: 500px;
     width: 320px;
-    background-color: green;
+    background-color: #49CC9A;
     position: absolute;
     border-radius: 15px;
     object-fit: cover;
