@@ -17,4 +17,50 @@
     letter-spacing: -1px; 
     line-height: 1; 
     text-align: left;
+    margin-block-start: 5%;
+    margin-block-end: 5%;
+    text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.statistics_container{
+    display: grid;
+    grid-auto-flow: column;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    top: 5%;
+    width: 100%;
+    height: 100%;
+}
+
+.stats_card{
+    height: 500px;
+    width: 320px;
+    margin: 0px 10px 10px 10px;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+    border: solid black;
+    box-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    position: relative;
+    background: linear-gradient(100deg,rgb(195, 212, 241),rgb(165, 246, 219));
+    color: black;
+}
+
+.stats_card_body{
+    height: 500px;
+    width: 320px;
+    position: absolute;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.stats_card_body > h1{
+    font-weight: 500; 
+    color: black;
+}
+
+.stats_card_body > p {
+    font-weight: 300; 
+    color: black;
 }

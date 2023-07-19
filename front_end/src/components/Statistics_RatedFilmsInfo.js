@@ -39,79 +39,81 @@ const RatedFilmsInfo = ({ratedFilms}) => {
 
     return (
 
-        <div className="wishlist_container">
-            <div className = "wishlist_card">
-                <p>Films watched: {ratedFilms.length} </p>
-                <p>Total minutes watched: {StatisticsFunctions.getTotalRuntime(ratedFilms)}</p>
-                <p>Total hours watched: {StatisticsFunctions.getTotalRuntime(ratedFilms) / 60}</p>
+        <div className="statistics_container">
+            <div className="stats_card">
+                <div className="stats_card_body">
+                    <p>Films watched: {ratedFilms.length} </p>
+                    <p>Total minutes watched: {StatisticsFunctions.getTotalRuntime(ratedFilms)}</p>
+                    <p>Total hours watched: {StatisticsFunctions.getTotalRuntime(ratedFilms) / 60}</p>
+                </div>
             </div>
                 { ratedFilms.length>0 ? 
                 <>
-                <div className = "wishlist_card">
-                    <div>
+                <div className = "stats_card">
+                    <div className="stats_card_body">
                         <p>Most watched actors:</p> 
                         {mapMostWatched(mostWatchedActors.slice(0,maxNumberOfEntries))}
                     </div> 
                 </div>
 
-                <div className = "wishlist_card">
-                    <div>
+                <div className = "stats_card">
+                    <div className="stats_card_body">
                         <p>Higest rated actors: </p> 
                         {mapHighestRated(highestRatedActors.slice(0,maxNumberOfEntries))}
                     </div>
                 </div>
 
-                <div className = "wishlist_card">
-                    <div>
+                <div className = "stats_card">
+                    <div className="stats_card_body">
                         <p>Most watched genres:</p> 
                         {mapMostWatched(mostWatchedGenres.slice(0,maxNumberOfEntries))}
                     </div> 
                 </div>
 
-                <div className = "wishlist_card">
-                    <div>
+                <div className = "stats_card">
+                    <div className="stats_card_body">
                         <p>Higest rated genres: </p> 
                         {mapHighestRated(highestRatedGenres.slice(0,maxNumberOfEntries))}
                     </div>
                 </div>
 
-                <div className = "wishlist_card">
-                    <div>
+                <div className = "stats_card">
+                    <div className="stats_card_body">
                         <p>Most watched keywords:</p> 
                         {mapMostWatched(mostWatchedKeywords.slice(0,maxNumberOfEntries))}
                     </div> 
                 </div>
 
-                <div className = "wishlist_card">
-                    <div>
+                <div className = "stats_card">
+                    <div className="stats_card_body">
                         <p>Higest rated keywords: </p> 
                         {mapHighestRated(higestRatedKeywords.slice(0,maxNumberOfEntries))}
                     </div>
                 </div> 
 
-                <div className = "wishlist_card">
-                    <div>
-                        <p>Most watched countries:</p> 
+                <div className = "stats_card">
+                    <div className = "stats_card_body">
+                        <h1>Most watched countries:</h1> 
                         {mapMostWatched(mostWatchedCountries.slice(0,maxNumberOfEntries))}
                     </div> 
                 </div>
 
-                <div className = "wishlist_card">
-                    <div>
-                        <p>Higest rated countries: </p> 
+                <div className = "stats_card">
+                    <div className="stats_card_body">
+                        <h1>Higest rated countries: </h1> 
                         {mapHighestRated(highestRatedCountries.slice(0,maxNumberOfEntries))}
                     </div>
                 </div> 
 
-                <div className = "wishlist_card">
-                    <div>
+                <div className = "stats_card">
+                    <div className="stats_card_body">
                         <p>Most watched languages:</p> 
                         {mapMostWatched(mostWatchedLanguages.slice(0,maxNumberOfEntries))}
                     </div> 
                 </div>
 
-                <div className = "wishlist_card">
-                    <div>
+                <div className = "stats_card">
+                    <div className="stats_card_body">
                         <p>Higest rated languages: </p> 
                         {mapHighestRated(highestRatedLanguages.slice(0,maxNumberOfEntries))}
                     </div>
