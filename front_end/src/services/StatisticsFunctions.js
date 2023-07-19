@@ -23,8 +23,18 @@ const StatisticsFunctions = {
                     }
                 } else {
                 for (const element of film[field]) {
-                    //MAYBE CHANGE THIS TO ID INSTEAD OF NAME?
-                    if (counterObject[element.name]) {
+                    if (field === "spoken_languages") {
+
+                        if (counterObject[element["english_name"]]) {
+                            counterObject[element["english_name"]][0].push(film.rating)
+                        } else {
+                            counterObject[element["english_name"]] = [[film.rating],[element["profile_path"]]]
+                        }
+
+                        
+
+                    } else if
+                     (counterObject[element.name]) {
                         counterObject[element.name][0].push(film.rating)
                     } else {
                         counterObject[element.name] = [[film.rating],[element["profile_path"]]]
