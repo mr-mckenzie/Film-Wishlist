@@ -1,5 +1,4 @@
 import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
 
@@ -12,8 +11,8 @@ React.useEffect(() =>
 setValue(null), [filmId])
 
 return (
-    <div>
-        <Typography component="legend">Rate this film</Typography>
+    <div className="rating_component" >
+        <p component="legend">Rate this film</p>
             <Rating
                 name="simple-controlled"
                 value={value}

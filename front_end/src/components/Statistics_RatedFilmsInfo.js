@@ -51,42 +51,42 @@ const RatedFilmsInfo = ({ratedFilms}) => {
                 <>
                 <div className = "stats_card">
                     <div className="stats_card_body">
-                        <p>Most watched actors:</p> 
+                        <h1>Most watched actors:</h1> 
                         {mapMostWatched(mostWatchedActors.slice(0,maxNumberOfEntries))}
                     </div> 
                 </div>
 
                 <div className = "stats_card">
                     <div className="stats_card_body">
-                        <p>Higest rated actors: </p> 
+                        <h1>Highest rated actors: </h1> 
                         {mapHighestRated(highestRatedActors.slice(0,maxNumberOfEntries))}
                     </div>
                 </div>
 
                 <div className = "stats_card">
                     <div className="stats_card_body">
-                        <p>Most watched genres:</p> 
+                        <h1>Most watched genres:</h1> 
                         {mapMostWatched(mostWatchedGenres.slice(0,maxNumberOfEntries))}
                     </div> 
                 </div>
 
                 <div className = "stats_card">
                     <div className="stats_card_body">
-                        <p>Higest rated genres: </p> 
+                        <h1>Highest rated genres: </h1> 
                         {mapHighestRated(highestRatedGenres.slice(0,maxNumberOfEntries))}
                     </div>
                 </div>
 
                 <div className = "stats_card">
                     <div className="stats_card_body">
-                        <p>Most watched keywords:</p> 
+                        <h1>Most watched keywords:</h1> 
                         {mapMostWatched(mostWatchedKeywords.slice(0,maxNumberOfEntries))}
                     </div> 
                 </div>
 
                 <div className = "stats_card">
                     <div className="stats_card_body">
-                        <p>Higest rated keywords: </p> 
+                        <h1>Highest rated keywords: </h1> 
                         {mapHighestRated(higestRatedKeywords.slice(0,maxNumberOfEntries))}
                     </div>
                 </div> 
@@ -100,21 +100,21 @@ const RatedFilmsInfo = ({ratedFilms}) => {
 
                 <div className = "stats_card">
                     <div className="stats_card_body">
-                        <h1>Higest rated countries: </h1> 
+                        <h1>Highest rated countries: </h1> 
                         {mapHighestRated(highestRatedCountries.slice(0,maxNumberOfEntries))}
                     </div>
                 </div> 
 
                 <div className = "stats_card">
                     <div className="stats_card_body">
-                        <p>Most watched languages:</p> 
+                        <h1>Most watched languages:</h1> 
                         {mapMostWatched(mostWatchedLanguages.slice(0,maxNumberOfEntries))}
                     </div> 
                 </div>
 
                 <div className = "stats_card">
                     <div className="stats_card_body">
-                        <p>Higest rated languages: </p> 
+                        <h1>Highest rated languages: </h1> 
                         {mapHighestRated(highestRatedLanguages.slice(0,maxNumberOfEntries))}
                     </div>
                 </div> 

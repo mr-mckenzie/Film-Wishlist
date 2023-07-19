@@ -15,7 +15,7 @@
     font-size: 150px; 
     font-weight: bold; 
     letter-spacing: -1px; 
-    line-height: 1; 
+    line-height: 0.2; 
     text-align: left;
     margin-block-start: 5%;
     margin-block-end: 5%;
@@ -116,21 +116,36 @@ color: black;
     transform: scale(0.96)
 }
 
-.search_category {
+.rating_component {
+    background: linear-gradient(235deg,#27e2cc,#923dd7);
     width: 100%;
-    margin: 2.5px;
+    align-self: center;
+    border-radius: 15px;
+    color: white;
+}
+
+.search_form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-items: center;
 }
 
 .search_bar {
-    margin: 2.5px;
-    width: 50%;
+    width: 100%;
+}
+
+.search_category {
+    width: 100%;
 }
 
 .search_chips {
-    margin: 2.5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: scroll;
+    justify-self: safe center;
 }
-
-
 
 
 

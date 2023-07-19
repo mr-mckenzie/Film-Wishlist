@@ -10,7 +10,7 @@ const createRouter = require('./helpers/create_router.js');
 MongoClient.connect('mongodb://127.0.0.1:27017', { useUnifiedTopology: true})
 .then((client) => {
     const db = client.db('film_project');
-    const filmsCollection = db.collection('films');
+    const filmsCollection = db.collection('films_test');
     const filmsRouter = createRouter(filmsCollection);
     app.use('/api/films', filmsRouter);
 
