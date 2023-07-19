@@ -12,11 +12,14 @@
 .search_page > h1 {
     color: #111; 
     font-family: 'Nunito Sans', sans-serif; 
-    font-size: 125px; 
+    font-size: 150px; 
     font-weight: bold; 
-    letter-spacing: -1px;
-    line-height: 0;
+    letter-spacing: -1px; 
+    line-height: 1; 
     text-align: left;
+    margin-block-start: 5%;
+    margin-block-end: 5%;
+    text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .search_container{
@@ -24,33 +27,93 @@
     grid-auto-flow: column;
     overflow-x: scroll;
     overflow-y: hidden;
-    /* top: 5%; */
+    top: 5%;
     width: 100%;
     height: 100%;
 }
 
-.search_form{
-    color: black;
+.search_card{
+    height: 500px;
+    width: 320px;
+    margin: 0px 10px 10px 10px;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+    border: solid black;
+    box-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    position: relative;
+    background-color: black;
 }
 
-.search_button{ 
-    position: sticky; 
-    cursor: pointer;
-}
-
-.search_form{
+.search_card_body{
+    height: 500px;
+    width: 320px;
+    position: absolute;
+    opacity: 0;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    width: 40%;
+    top: -100%;
 }
 
-.button_container {
-    display: grid;
-    overflow: scroll;
-    width: 100%;
+.search_card_body > h1{
+    font-weight: 900; 
+    color: rgb(255, 255, 255);
+    text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
 }
 
-/* MM ADDED STYLES BELOW */
+.search_card_body > p {
+    font-weight: 300; 
+    color: white;
+    text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.search_poster_image{
+    height: 500px;
+    width: 320px;
+    background-color: green;
+    position: absolute;
+    border-radius: 15px;
+    object-fit: cover;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.search_card:hover > .search_card_body{
+    opacity: 1;
+    top: 0;
+    transition: 500ms;
+}
+
+.search_card:hover > .search_poster_image{
+    opacity: 0.7;
+}
+
+.search_button{
+    background-color: rgb(88, 154, 252);
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(135deg,rgb(92, 44, 237), #24a3ba);
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 2px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    position: sticky;
+}
+
+.search_button:hover{
+background: linear-gradient(135deg,#2cc4df,#66d55a);
+color: black;
+}
+
+.search_button:active {
+    transform: scale(0.96)
+}
+
 .search_category {
     width: 100%;
     margin: 2.5px;
@@ -58,12 +121,49 @@
 
 .search_bar {
     margin: 2.5px;
-    width: 100%;
+    width: 50%;
 }
 
 .search_chips {
     margin: 2.5px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+
+
+
+
+.search_form{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+
+.button_container {
+    display: grid;
+    overflow: scroll;
+    width: 100%;
+}
+
+/* MM ADDED STYLES BELOW 
+
 
 
 
@@ -77,7 +177,7 @@
     margin-top: 15px;
 }
 
-.wishlist_button{ 
+.search_button{ 
     position: sticky; 
     cursor: pointer;
 }
@@ -88,10 +188,10 @@
     display: flex;
     flex-direction: column;
     margin: 10px 10px 10px 10px;
-    /* flex-wrap: nowrap; */
+    /* flex-wrap: nowrap; 
     height: 45%;
     align-items: center;
-    /* overflow: hidden; */
+    /* overflow: hidden; 
     border-radius: 20px;
     text-align: center;
     border: solid black;
@@ -100,7 +200,7 @@
 /* 
 .search_card:hover > .search_card_body{
     position: relative;
-} */
+} 
 
 
 .search_card_body{
@@ -118,17 +218,15 @@
     transition: 2s;
 }
 
-/* .wishlist_card_body > h1 {
-    font-size: 50px;
-    font-weight: 400;
-} */
+
+*/
 /* 
-.wishlist_card_body > p {
+.search_card_body > p {
     font-size:15px;
     font-weight: 400;
 } */
 
-/* .wishlist_button{
+/* .search_button{
     background-color: pink;
     cursor: pointer;
     text-align: center;
@@ -141,11 +239,11 @@
     position: relative;
 } */
 
-/* .wishlist_button:active {
+/* .search_button:active {
     transform: scale(0.96)
-} */
+} 
 
 .search_poster_image{
     height: 100%;
     border-radius: 20px;
-}
+} */
