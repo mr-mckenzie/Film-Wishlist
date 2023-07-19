@@ -26,10 +26,10 @@ const WishlistFilms = ({wishlist, setWishlist}) => {
                 <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" />
             </div>
             <div className="wishlist_card_body">
+                <button className="wishlist_button" value = {film._id} onClick ={handleClickDeleteWishlistFilm }>Remove from wishlist</button>
                 <h1 className= "wishlist_card_title">{film.title}</h1>
                 <p>Average rating: {film.vote_average}</p>
                 <p>{film.overview}</p>
-                <button className="wishlist_button" value = {film._id} onClick ={handleClickDeleteWishlistFilm }>Remove from wishlist</button>
             </div>
         </div>
     )
