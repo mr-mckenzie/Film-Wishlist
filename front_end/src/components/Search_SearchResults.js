@@ -46,9 +46,9 @@ const SearchResults = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, s
                         </div>
                         <div className='search_card_body'>
                             <h1 className='search_card_title'>{film.title}</h1>
-                            <h3>({film.release_date.slice(0,4)})</h3>
-                            <button onClick ={()=>{addToWishlist(film.id)}}>Add to Wishlist</button>
-                            <RatingComponent addToRatedFilms = {addToRatedFilms} filmId = {film.id}/>
+                            <p>({film.release_date.slice(0,4)})</p>
+                            <button className="wishlist_button" onClick ={()=>{addToWishlist(film.id)}}>Add to Wishlist</button>
+                            <RatingComponent className="rating_component" addToRatedFilms = {addToRatedFilms} filmId = {film.id}/>
                         </div>
                     </div>
                 )

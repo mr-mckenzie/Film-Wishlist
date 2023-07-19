@@ -30,6 +30,7 @@
     top: 5%;
     width: 100%;
     height: 100%;
+    justify-content: safe center;
 }
 
 .wishlist_card{
@@ -87,7 +88,7 @@
 }
 
 .wishlist_card:hover > .wishlist_poster_image{
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 .wishlist_button{
