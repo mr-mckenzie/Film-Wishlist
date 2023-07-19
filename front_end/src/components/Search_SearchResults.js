@@ -41,13 +41,14 @@ const SearchResults = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, s
             mappedFilms = filmsToMap.map( film => {
                 return (
                     <div className="search_card">
-                        <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" className="search_poster_image"/>
+                        <div className="search_poster_image">
+                            <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" />
+                        </div>
                         <div className='search_card_body'>
-                        <h1 className='search_card_title'>{film.title}</h1>
-                        <h3>({film.release_date.slice(0,4)})</h3>
-                        {/* <p>{film.overview}</p> */}
-                        <button onClick ={()=>{addToWishlist(film.id)}}>Add to Wishlist</button>
-                        <RatingComponent addToRatedFilms = {addToRatedFilms} filmId = {film.id}/>
+                            <h1 className='search_card_title'>{film.title}</h1>
+                            <h3>({film.release_date.slice(0,4)})</h3>
+                            <button onClick ={()=>{addToWishlist(film.id)}}>Add to Wishlist</button>
+                            <RatingComponent addToRatedFilms = {addToRatedFilms} filmId = {film.id}/>
                         </div>
                     </div>
                 )

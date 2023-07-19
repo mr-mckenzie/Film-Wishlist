@@ -20,22 +20,13 @@ const RatedFilms = ({ratedFilms, setRatedFilms}) => {
         deleteFilmFromRatedFilms(event.target.value)
     }
 
-    // to do with on page styling
-    // const Item = styled(Paper)(({ theme }) => ({
-    //     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    //     ...theme.typography.body2,
-    //     padding: theme.spacing(1),
-    //     textAlign: 'center',
-    //     color: theme.palette.text.secondary,
-    // }));
-
-    
-
     const ratedFilmsDisplay = ratedFilms.map((film) => 
         <div key = {film.id} className="ratings_card">
-            <button className="ratings_button" value = {film._id} onClick ={handleClickDeleteRatedFilm}>Remove from rated films</button>
-            <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" class="ratings_poster_image"/>
-            <div className="wishlist_card_body">
+            <div class="ratings_poster_image">
+                <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" />
+            </div>
+            <div className="ratings_card_body">
+                <button className="ratings_button" value = {film._id} onClick ={handleClickDeleteRatedFilm}>Remove from rated films</button>
                 <h1>{film.title}</h1>
                 <p>Average rating: {film.vote_average}</p>
                 <p>{film.overview}</p>
