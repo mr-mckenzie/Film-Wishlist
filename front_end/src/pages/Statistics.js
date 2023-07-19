@@ -6,7 +6,7 @@ import RatedFilmsInfo from "../components/Statistics_RatedFilmsInfo";
 const Statistics = ({ratedFilms}) => (
     <div className="statistics_page">
         <h1>Statistics</h1>
-        <TopRatedActors ratedFilms={ratedFilms}/>
+        {/* <TopRatedActors ratedFilms={ratedFilms}/> */}
         <RatedFilmsInfo ratedFilms={ratedFilms}/>
     </div>
 )

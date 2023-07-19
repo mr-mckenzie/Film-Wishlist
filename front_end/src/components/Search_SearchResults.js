@@ -1,25 +1,10 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Unstable_Grid2';
 import ExternalServices from '../services/ExternalServices';
 import InternalServices from '../services/InternalServices';
 import RatingComponent from "./Search_RatingComponent"
 
-
-
-// to do with on page styling
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
-
 // this is the main function in this folder
-const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRatedFilms}) => {
+const SearchResults = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRatedFilms}) => {
 
     // adding the rating key value pair to api output
     //ALSO deletes crew from object
@@ -56,10 +41,14 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRat
             mappedFilms = filmsToMap.map( film => {
                 return (
                     <div className="search_card">
-                        <p>{film.title}</p>
-                        <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" className='search_poster_image'/>
+                        <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" className="search_poster_image"/>
+                        <div className='search_card_body'>
+                        <h1 className='search_card_title'>{film.title}</h1>
+                        <h3>({film.release_date.slice(0,4)})</h3>
+                        {/* <p>{film.overview}</p> */}
                         <button onClick ={()=>{addToWishlist(film.id)}}>Add to Wishlist</button>
                         <RatingComponent addToRatedFilms = {addToRatedFilms} filmId = {film.id}/>
+                        </div>
                     </div>
                 )
             })
@@ -74,4 +63,4 @@ const AutoGrid = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRat
     );
 }
 
-export default AutoGrid
+export default SearchResults

@@ -12,13 +12,12 @@
 .search_page > h1 {
     color: #111; 
     font-family: 'Nunito Sans', sans-serif; 
-    font-size: 150px; 
+    font-size: 125px; 
     font-weight: bold; 
-    letter-spacing: -1px; 
-    line-height: 1; 
+    letter-spacing: -1px;
+    line-height: 0;
     text-align: left;
 }
-
 
 .search_container{
     display: grid;
@@ -44,51 +43,109 @@
     flex-direction: column;
     width: 40%;
 }
+
 .button_container {
     display: grid;
     overflow: scroll;
     width: 100%;
-    /* opacity: 0; */
-}
-/* 
-
-
-
-
-
-.actor_button {
-    
 }
 
-.keyword_button {
-
-}
-
-.search_container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow: scroll;
-    position: absolute;
-    top: 21%;
+/* MM ADDED STYLES BELOW */
+.search_category {
     width: 100%;
-    margin-top: 2%;
-    height: 11%;
+    margin: 2.5px;
 }
+
+.search_bar {
+    margin: 2.5px;
+    width: 100%;
+}
+
+.search_chips {
+    margin: 2.5px;
+}
+
+
+
+.search_container{
+    display: grid;
+    grid-auto-flow: column;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+    margin-top: 15px;
+}
+
+.wishlist_button{ 
+    position: sticky; 
+    cursor: pointer;
+}
+
+
 
 .search_card {
-    margin: 1%;
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
-    height: 95%;
-    width: 20%;
-    background-color:lightskyblue;
-    padding: 1%;
+    margin: 10px 10px 10px 10px;
+    /* flex-wrap: nowrap; */
+    height: 45%;
     align-items: center;
+    /* overflow: hidden; */
+    border-radius: 20px;
+    text-align: center;
+    border: solid black;
+    position: relative;
+}
+/* 
+.search_card:hover > .search_card_body{
+    position: relative;
+} */
+
+
+.search_card_body{
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    right: 0;
+    position: relative;
+    background: teal;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: 2s;
 }
 
-.search_poster_image{
-    height: 65%;
-    width: max-content;
+/* .wishlist_card_body > h1 {
+    font-size: 50px;
+    font-weight: 400;
 } */
+/* 
+.wishlist_card_body > p {
+    font-size:15px;
+    font-weight: 400;
+} */
+
+/* .wishlist_button{
+    background-color: pink;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+} */
+
+/* .wishlist_button:active {
+    transform: scale(0.96)
+} */
+
+.search_poster_image{
+    height: 100%;
+    border-radius: 20px;
+}
