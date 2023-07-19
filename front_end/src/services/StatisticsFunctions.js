@@ -8,50 +8,125 @@ const StatisticsFunctions = {
         return sumOfRuntimes
     },
 
-        getActorsInList (list) {
-            let actorCounterObject = {}
-            if (list.length > 0){
-                for (const film of list) {
-                    for (const castMember of film.credits.cast) {
+    getFieldFromFilmList (list, field, secondField=null) {
+        let counterObject = {}
+        if (list.length > 0){
+            for (const film of list) {
+                if (secondField) {
+                    for (const element of film[field][secondField]) {
                         //MAYBE CHANGE THIS TO ACTOR ID INSTEAD OF NAME?
-                        if (actorCounterObject[castMember.name]) {
-                            actorCounterObject[castMember.name].push(film.rating)
+                        if (counterObject[element.name]) {
+                            counterObject[element.name].push(film.rating)
                         } else {
-                            actorCounterObject[castMember.name] = [film.rating]
+                            counterObject[element.name] = [film.rating]
                         }
                     }
-                }
-
-                for (const [key, value] of Object.entries(actorCounterObject)) {
-                    if (value.length == 1) {
-                        delete actorCounterObject[key]
-                    }
-                }
-            }
-            return actorCounterObject
-        },
-
-        getGenresInList (list) {
-            let genreCounterObject = {}
-            for (const film of list) {
-                for (const genre of film.genres) {
-                    //MAYBE CHANGE THIS TO GENRE ID INSTEAD OF NAME?
-                    if (genreCounterObject[genre.name]) {
-                        genreCounterObject[genre.name].push(film.rating)
+                } else {
+                for (const element of film[field]) {
+                    //MAYBE CHANGE THIS TO ACTOR ID INSTEAD OF NAME?
+                    if (counterObject[element.name]) {
+                        counterObject[element.name].push(film.rating)
                     } else {
-                        genreCounterObject[genre.name] = [film.rating]
-                        
+                        counterObject[element.name] = [film.rating]
                     }
                 }
             }
-
-            for (const [key, value] of Object.entries(genreCounterObject)) {
+        }
+            for (const [key, value] of Object.entries(counterObject)) {
                 if (value.length == 1) {
-                    delete genreCounterObject[key]
+                    delete counterObject[key]
                 }
             }
-            return genreCounterObject
-        },
+        }
+        return counterObject
+    },
+
+    getProductionsCountriesInList(list) {
+        return this.getFieldFromFilmList(list, "production_countries")
+    },
+
+    getActorsInList(list) {
+        return this.getFieldFromFilmList(list, "credits", "cast")
+    },
+
+    getGenresInList (list) {
+        return this.getFieldFromFilmList(list, "genres")
+    },
+
+    getKeywordsInList (list) {
+        return this.getFieldFromFilmList(list, "keywords", "keywords")
+    },
+
+    getSpokenLanguagesInList (list) {
+        return this.getFieldFromFilmList(list, "spoken_languages")
+    },
+
+        // getActorsInList (list) {
+        //     let actorCounterObject = {}
+        //     if (list.length > 0){
+        //         for (const film of list) {
+        //             for (const castMember of film.credits.cast) {
+        //                 //MAYBE CHANGE THIS TO ACTOR ID INSTEAD OF NAME?
+        //                 if (actorCounterObject[castMember.name]) {
+        //                     actorCounterObject[castMember.name].push(film.rating)
+        //                 } else {
+        //                     actorCounterObject[castMember.name] = [film.rating]
+        //                 }
+        //             }
+        //         }
+
+        //         for (const [key, value] of Object.entries(actorCounterObject)) {
+        //             if (value.length == 1) {
+        //                 delete actorCounterObject[key]
+        //             }
+        //         }
+        //     }
+        //     return actorCounterObject
+        // },
+
+        // getGenresInList (list) {
+        //     let genreCounterObject = {}
+        //     for (const film of list) {
+        //         for (const genre of film.genres) {
+        //             //MAYBE CHANGE THIS TO GENRE ID INSTEAD OF NAME?
+        //             if (genreCounterObject[genre.name]) {
+        //                 genreCounterObject[genre.name].push(film.rating)
+        //             } else {
+        //                 genreCounterObject[genre.name] = [film.rating]
+                        
+        //             }
+        //         }
+        //     }
+
+        //     for (const [key, value] of Object.entries(genreCounterObject)) {
+        //         if (value.length == 1) {
+        //             delete genreCounterObject[key]
+        //         }
+        //     }
+        //     return genreCounterObject
+        // },
+
+        // getKeywordsInList (list) {
+        //     let genreCounterObject = {}
+        //     for (const film of list) {
+        //         for (const genre of film.keywords.keywords) {
+        //             //MAYBE CHANGE THIS TO GENRE ID INSTEAD OF NAME?
+        //             if (genreCounterObject[genre.name]) {
+        //                 genreCounterObject[genre.name].push(film.rating)
+        //             } else {
+        //                 genreCounterObject[genre.name] = [film.rating]
+                        
+        //             }
+        //         }
+        //     }
+
+        //     for (const [key, value] of Object.entries(genreCounterObject)) {
+        //         if (value.length == 1) {
+        //             delete genreCounterObject[key]
+        //         }
+        //     }
+        //     return genreCounterObject
+        // },
 
         sortByRating (object) {
 
@@ -166,7 +241,44 @@ const StatisticsFunctions = {
             const actorsObject = this.getActorsInList(list)
             const arrayOfActorsSortedByMostWatched = this.sortByMostWatched(actorsObject)
             return arrayOfActorsSortedByMostWatched
-        }
+        },
+
+        getArrayOfKeywordsByRating (list) {
+            const keywordsObject = this.getKeywordsInList(list)
+            const arrayOfKeywordsSortedByRating = this.sortByRating(keywordsObject)
+            return arrayOfKeywordsSortedByRating
+        },
+
+        getArrayOfKeywordsByMostWatched (list) {
+            const keywordsObject = this.getKeywordsInList(list)
+            const arrayOfKeywordsSortedByMostWatched = this.sortByMostWatched(keywordsObject)
+            return arrayOfKeywordsSortedByMostWatched
+        },
+
+        getArrayOfCountriesByRating (list) {
+            const countriesObject = this.getProductionsCountriesInList(list)
+            const arrayOfCountriesSortedByRating = this.sortByRating(countriesObject)
+            return arrayOfCountriesSortedByRating
+        },
+
+        getArrayOfCountriesByMostWatched (list) {
+            const countriesObject = this.getProductionsCountriesInList(list)
+            const arrayOfCountriesSortedByMostWatched = this.sortByMostWatched(countriesObject)
+            return arrayOfCountriesSortedByMostWatched
+        },
+        
+        getSpokenLanguagesByRating (list) {
+            const languagesObject = this.getSpokenLanguagesInList(list)
+            const languagesSortedByRating = this.sortByRating(languagesObject)
+            return languagesSortedByRating
+        }, 
+
+        getSpokenLanguagesByMostWatched (list) {
+            const languagesObject = this.getSpokenLanguagesInList(list)
+            const languagesSortedByMostWatched = this.sortByMostWatched(languagesObject)
+            return languagesSortedByMostWatched
+        }, 
+
 
 }
 export default StatisticsFunctions

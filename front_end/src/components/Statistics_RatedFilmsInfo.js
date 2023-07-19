@@ -9,6 +9,12 @@ const RatedFilmsInfo = ({ratedFilms}) => {
     const highestRatedGenres = StatisticsFunctions.getArrayOfGenresByRating(ratedFilms)
     const mostWatchedActors = StatisticsFunctions.getArrayOfActorsByMostWatched(ratedFilms)
     const highestRatedActors = StatisticsFunctions.getArrayOfActorsByRating(ratedFilms)
+    const mostWatchedKeywords = StatisticsFunctions.getArrayOfKeywordsByMostWatched(ratedFilms)
+    const higestRatedKeywords = StatisticsFunctions.getArrayOfKeywordsByRating(ratedFilms)
+    const mostWatchedCountries = StatisticsFunctions.getArrayOfCountriesByMostWatched(ratedFilms)
+    const highestRatedCountries = StatisticsFunctions.getArrayOfCountriesByRating(ratedFilms)
+    const mostWatchedLanguages = StatisticsFunctions.getSpokenLanguagesByMostWatched(ratedFilms)
+    const highestRatedLanguages = StatisticsFunctions.getSpokenLanguagesByRating(ratedFilms)
 
     const mapMostWatched = (array) => {
         return array.map( element => {
@@ -33,39 +39,77 @@ const RatedFilmsInfo = ({ratedFilms}) => {
                 <p>Total hours watched: {StatisticsFunctions.getTotalRuntime(ratedFilms) / 60}</p>
             </div>
                 { ratedFilms.length>0 ? 
-            <div className = "wishlist_card">
-                <ul>
-                    <p>Most watched actors:</p> 
-                    {mapMostWatched(mostWatchedActors.slice(0,maxNumberOfEntries))}
-                </ul> 
-            </div>
-            :
-            <></>}
-            { ratedFilms.length>0 ? 
-            <div className = "wishlist_card">
-                <ul>
-                    <p>Higest rated actors: </p> 
-                    {mapHighestRated(highestRatedActors.slice(0,maxNumberOfEntries))}
-                </ul>
-            </div>
-            : 
-            <></>}
-            { ratedFilms.length>0 ? 
-            <div className = "wishlist_card">
-                <ul>
-                    <p>Most watched genre:</p> 
-                    {mapMostWatched(mostWatchedGenres.slice(0,maxNumberOfEntries))}
-                </ul> 
-            </div>
-            :
-            <></>}          
-            { ratedFilms.length>0 ? 
-            <div className = "wishlist_card">
-                <ul>
-                    <p>Higest rated genre: </p> 
-                    {mapHighestRated(highestRatedGenres.slice(0,maxNumberOfEntries))}
-                </ul>
-            </div>
+                <>
+                <div className = "wishlist_card">
+                    <ul>
+                        <p>Most watched actors:</p> 
+                        {mapMostWatched(mostWatchedActors.slice(0,maxNumberOfEntries))}
+                    </ul> 
+                </div>
+
+                <div className = "wishlist_card">
+                    <ul>
+                        <p>Higest rated actors: </p> 
+                        {mapHighestRated(highestRatedActors.slice(0,maxNumberOfEntries))}
+                    </ul>
+                </div>
+
+                <div className = "wishlist_card">
+                    <ul>
+                        <p>Most watched genres:</p> 
+                        {mapMostWatched(mostWatchedGenres.slice(0,maxNumberOfEntries))}
+                    </ul> 
+                </div>
+
+                <div className = "wishlist_card">
+                    <ul>
+                        <p>Higest rated genres: </p> 
+                        {mapHighestRated(highestRatedGenres.slice(0,maxNumberOfEntries))}
+                    </ul>
+                </div>
+
+                <div className = "wishlist_card">
+                    <ul>
+                        <p>Most watched keywords:</p> 
+                        {mapMostWatched(mostWatchedKeywords.slice(0,maxNumberOfEntries))}
+                    </ul> 
+                </div>
+
+                <div className = "wishlist_card">
+                    <ul>
+                        <p>Higest rated keywords: </p> 
+                        {mapHighestRated(higestRatedKeywords.slice(0,maxNumberOfEntries))}
+                    </ul>
+                </div> 
+
+                <div className = "wishlist_card">
+                    <ul>
+                        <p>Most watched countries:</p> 
+                        {mapMostWatched(mostWatchedCountries.slice(0,maxNumberOfEntries))}
+                    </ul> 
+                </div>
+
+                <div className = "wishlist_card">
+                    <ul>
+                        <p>Higest rated countries: </p> 
+                        {mapHighestRated(highestRatedCountries.slice(0,maxNumberOfEntries))}
+                    </ul>
+                </div> 
+
+                <div className = "wishlist_card">
+                    <ul>
+                        <p>Most watched languages:</p> 
+                        {mapMostWatched(mostWatchedLanguages.slice(0,maxNumberOfEntries))}
+                    </ul> 
+                </div>
+
+                <div className = "wishlist_card">
+                    <ul>
+                        <p>Higest rated languages: </p> 
+                        {mapHighestRated(highestRatedLanguages.slice(0,maxNumberOfEntries))}
+                    </ul>
+                </div> 
+            </>
             : 
             <></>}
         </div>
