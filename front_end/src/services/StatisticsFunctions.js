@@ -43,7 +43,7 @@ const StatisticsFunctions = {
             }
         }
             for (const [key, value] of Object.entries(counterObject)) {
-                if (value[0].length == 1) {
+                if (value[0].length < 3) {
                     delete counterObject[key]
                 }
             }
