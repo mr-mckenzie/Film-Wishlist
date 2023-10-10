@@ -18,20 +18,20 @@ const RatedFilmsInfo = ({ratedFilms}) => {
 
     const mapMostWatched = (array) => {
         return array.map( element => {
-            return (element[4][0] ? 
-            <p><Avatar src={ExternalServices.getFullActorImageURLByPath( element[4] )}/> {element[0]} - {element[2]}</p> 
+            return (element["profile_path"] ? 
+            <p><Avatar src={ExternalServices.getFullActorImageURLByPath( element["profile_path"] )}/> {element["name"]} - {element["number_of_ratings"]}</p> 
             :
-            <p className="statistics_fact"> {element[0]} - {element[2]}</p>
+            <p className="statistics_fact"> {element["name"]} - {element["number_of_ratings"]}</p>
             )
         } )
     }
 
     const mapHighestRated = (array) => {
         return array.map( element => {
-            return (element[4][0] ? 
-            <p> <Avatar src={ExternalServices.getFullActorImageURLByPath( element[4] )}/> {element[0]} - {Math.round(element[3]*100)/100}</p> 
+            return (element["profile_path"] ? 
+            <p> <Avatar src={ExternalServices.getFullActorImageURLByPath( element["profile_path"] )}/> {element["name"]} - {Math.round(element["average_rating"]*100)/100}</p> 
             : 
-            <p>{element[0]} - {Math.round(element[3]*100)/100}</p>)
+            <p>{element["name"]} - {Math.round(element["average_rating"]*100)/100}</p>)
         } )
     }
 

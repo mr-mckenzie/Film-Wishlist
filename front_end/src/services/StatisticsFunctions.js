@@ -16,9 +16,9 @@ const StatisticsFunctions = {
                     for (const element of film[field][secondField]) {
                         //MAYBE CHANGE THIS TO ID INSTEAD OF NAME?
                         if (counterObject[element.name]) {
-                            counterObject[element.name][0].push(film.rating)
+                            counterObject[element.name]["ratings"].push(film.rating)
                         } else {
-                            counterObject[element.name] = [[film.rating], [element["profile_path"]]]
+                            counterObject[element.name] = {"id" : element.id, "ratings":[film.rating], "profile_path": (element["profile_path"] ? element["profile_path"] : null)}
                         }
                     }
                 } else {
@@ -26,24 +26,23 @@ const StatisticsFunctions = {
                     if (field === "spoken_languages") {
 
                         if (counterObject[element["english_name"]]) {
-                            counterObject[element["english_name"]][0].push(film.rating)
+                            counterObject[element["english_name"]]["ratings"].push(film.rating)
                         } else {
-                            counterObject[element["english_name"]] = [[film.rating],[element["profile_path"]]]
+                            counterObject[element["english_name"]] = {"id" : element.id, "ratings":[film.rating], "profile_path": null}
                         }
 
                         
 
-                    } else if
-                     (counterObject[element.name]) {
-                        counterObject[element.name][0].push(film.rating)
+                    } else if (counterObject[element.name]) {
+                        counterObject[element.name]["ratings"].push(film.rating)
                     } else {
-                        counterObject[element.name] = [[film.rating],[element["profile_path"]]]
+                        counterObject[element.name] = {"id" : element.id, "ratings":[film.rating], "profile_path": null}
                     }
                 }
             }
         }
             for (const [key, value] of Object.entries(counterObject)) {
-                if (value[0].length < 3) {
+                if (value["ratings"].length < 2) {
                     delete counterObject[key]
                 }
             }
@@ -78,36 +77,36 @@ const StatisticsFunctions = {
             //console.log("key", key)
             //console.log("value", value)
 
-            const numberOfRatings = value[0].length
+            const numberOfRatings = value["ratings"].length
 
             let sumOfRatings = 0
-            for (let i = 0; i<value[0].length; i++) {
-                sumOfRatings = sumOfRatings + value[0][i]
+            for (let i = 0; i<value["ratings"].length; i++) {
+                sumOfRatings = sumOfRatings + value["ratings"][i]
             }
 
             const averageRating = sumOfRatings/numberOfRatings
 
             //key = name, value = array of individual ratings
-            arrayForSorting.push([key, value[0], numberOfRatings, averageRating, value[1]]);
+            arrayForSorting.push({"name": key, "id":value["id"], "ratings": value["ratings"], "number_of_ratings":numberOfRatings, "average_rating": averageRating, "profile_path": value["profile_path"]});
         }
         
         //console.log("Array for Sorting:", arrayForSorting)
 
         const sortingFunction = (a, b) => {
             //first sort by rating
-            if (a[3] > b[3]) {
+            if (a["average_rating"] > b["average_rating"]) {
                 return -1
-            } else if (a[3] < b[3]) {
+            } else if (a["average_rating"] < b["average_rating"]) {
                 return 1
             //then sort by number of films watched
-            } else if (a[2] > b[2]) {
+            } else if (a["number_of_ratings"] > b["number_of_ratings"]) {
                 return -1 
-            } else if (a[2] < b[2]) {
+            } else if (a["number_of_ratings"] < b["number_of_ratings"]) {
                 return 1
             //then sort alphabetically
-            } else if (a[0] > b[0]) {
+            } else if (a["name"] > b["name"]) {
                 return -1 
-            } else if (a[0] < b[0]) {
+            } else if (a["name"] < b["name"]) {
                 return 1
             } else {
                 return 0
@@ -126,31 +125,31 @@ const StatisticsFunctions = {
             //console.log("key", key)
             //console.log("value", value)
 
-            const numberOfRatings = value[0].length
+            const numberOfRatings = value["ratings"].length
 
             let sumOfRatings = 0
-            for (let i = 0; i<value[0].length; i++) {
-                sumOfRatings = sumOfRatings + value[0][i]
+            for (let i = 0; i<value["ratings"].length; i++) {
+                sumOfRatings = sumOfRatings + value["ratings"][i]
             }
 
             const averageRating = sumOfRatings/numberOfRatings
 
             //key = name, value = array of individual ratings
-            arrayForSorting.push([key, value[0], numberOfRatings, averageRating, value[1]]);
+            arrayForSorting.push({"name": key, "id":value["id"], "ratings": value["ratings"], "number_of_ratings":numberOfRatings, "average_rating": averageRating, "profile_path": value["profile_path"]});
         }
         
         //console.log("Array for Sorting:", arrayForSorting)
 
         const sortingFunction = (a, b) => {
             // sort by most watched
-            if (a[2] > b[2]) {
+            if (a["number_of_ratings"] > b["number_of_ratings"]) {
                 return -1
-            } else if (a[2] < b[2]) {
+            } else if (a["number_of_ratings"] < b["number_of_ratings"]) {
                 return 1
             // then sort by higest rated
-            } else if (a[3] > b[3]) {
+            } else if (a["average_rating"] > b["average_rating"]) {
                 return -1 
-            } else if (a[3] < b[3]) {
+            } else if (a["average_rating"] < b["average_rating"]) {
                 return 1
             } else {
                 return 0
