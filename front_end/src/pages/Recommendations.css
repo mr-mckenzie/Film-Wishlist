@@ -1,0 +1,116 @@
+.recommendations_page {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    height: 100%;
+}
+
+.recommendations_page>h1 {
+    color: #111;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 150px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-align: left;
+    margin-block-start: 5%;
+    margin-block-end: 5%;
+    text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.wishlist_container {
+    display: grid;
+    grid-auto-flow: column;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    top: 5%;
+    width: 100%;
+    height: 100%;
+    justify-content: safe center;
+}
+
+.wishlist_card {
+    height: 500px;
+    width: 320px;
+    margin: 0px 10px 10px 10px;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+    border: solid black;
+    box-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    position: relative;
+    background-color: black;
+}
+
+.wishlist_card_body {
+    height: 500px;
+    width: 320px;
+    position: absolute;
+    opacity: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    top: -100%;
+}
+
+.wishlist_card_body>h1 {
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+    text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+}
+
+.wishlist_card_body>p {
+    font-weight: 300;
+    color: white;
+    text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.wishlist_poster_image {
+    height: 500px;
+    width: 320px;
+    background-color: #46CBB1;
+    position: absolute;
+    border-radius: 15px;
+    object-fit: cover;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.wishlist_card:hover>.wishlist_card_body {
+    opacity: 1;
+    top: 0;
+    transition: 500ms;
+}
+
+.wishlist_card:hover>.wishlist_poster_image {
+    opacity: 0.5;
+}
+
+.wishlist_button {
+    background-color: rgb(88, 154, 252);
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(135deg, rgb(92, 44, 237), #24a3ba);
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 2px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: sticky;
+}
+
+.wishlist_button:hover {
+    background: linear-gradient(135deg, #2cc4df, #66d55a);
+    color: black;
+}
+
+.wishlist_button:active {
+    transform: scale(0.96)
+}
