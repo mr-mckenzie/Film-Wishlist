@@ -8,54 +8,43 @@ const StatisticsFunctions = {
         return sumOfRuntimes
     },
 
-    getFieldFromFilmList (list, field, secondField=null) {
+    getFieldFromFilmList(list, field) {
         let counterObject = {}
-        if (list.length > 0){
+        if (list.length > 0) {
             for (const film of list) {
-                if (secondField) {
-                    for (const element of film[field][secondField]) {
-                        //MAYBE CHANGE THIS TO ID INSTEAD OF NAME?
+                for (const element of film[field]) {
+                    //in preference count over id field to avoid duplicate names
+                    if (element.id) {
+                        if (counterObject[element.id]) {
+                            counterObject[element.id]["ratings"].push(film.rating)
+                        } else {
+                            counterObject[element.id] = {"name":element.name, "id": element.id, "ratings": [film.rating], "profile_path": (element["profile_path"] ? element["profile_path"] : null) }
+                        }
+                    //otherwise count over name field for those that do not have an id (such as language)
+                    } else {
                         if (counterObject[element.name]) {
                             counterObject[element.name]["ratings"].push(film.rating)
                         } else {
-                            counterObject[element.name] = {"id" : element.id, "ratings":[film.rating], "profile_path": (element["profile_path"] ? element["profile_path"] : null)}
+                            counterObject[element.name] = {"name":element.name, "id": element.id, "ratings": [film.rating], "profile_path": (element["profile_path"] ? element["profile_path"] : null) }
                         }
-                    }
-                } else {
-                for (const element of film[field]) {
-                    if (field === "spoken_languages") {
-
-                        if (counterObject[element["english_name"]]) {
-                            counterObject[element["english_name"]]["ratings"].push(film.rating)
-                        } else {
-                            counterObject[element["english_name"]] = {"id" : element.id, "ratings":[film.rating], "profile_path": null}
-                        }
-
-                        
-
-                    } else if (counterObject[element.name]) {
-                        counterObject[element.name]["ratings"].push(film.rating)
-                    } else {
-                        counterObject[element.name] = {"id" : element.id, "ratings":[film.rating], "profile_path": null}
                     }
                 }
             }
-        }
             for (const [key, value] of Object.entries(counterObject)) {
                 if (value["ratings"].length < 2) {
                     delete counterObject[key]
                 }
             }
         }
-        return counterObject
-    },
+            return counterObject
+        },
 
     getProductionsCountriesInList(list) {
         return this.getFieldFromFilmList(list, "production_countries")
     },
 
     getActorsInList(list) {
-        return this.getFieldFromFilmList(list, "credits", "cast")
+        return this.getFieldFromFilmList(list, "cast")
     },
 
     getGenresInList (list) {
@@ -63,7 +52,7 @@ const StatisticsFunctions = {
     },
 
     getKeywordsInList (list) {
-        return this.getFieldFromFilmList(list, "keywords", "keywords")
+        return this.getFieldFromFilmList(list, "keywords")
     },
 
     getSpokenLanguagesInList (list) {
@@ -74,8 +63,6 @@ const StatisticsFunctions = {
 
         const arrayForSorting = [];
         for (const [key, value] of Object.entries(object)) {
-            //console.log("key", key)
-            //console.log("value", value)
 
             const numberOfRatings = value["ratings"].length
 
@@ -86,8 +73,8 @@ const StatisticsFunctions = {
 
             const averageRating = sumOfRatings/numberOfRatings
 
-            //key = name, value = array of individual ratings
-            arrayForSorting.push({"name": key, "id":value["id"], "ratings": value["ratings"], "number_of_ratings":numberOfRatings, "average_rating": averageRating, "profile_path": value["profile_path"]});
+            //key = name or id, value = array of individual ratings
+            arrayForSorting.push({"name": value["name"], "id":value["id"], "ratings": value["ratings"], "number_of_ratings":numberOfRatings, "average_rating": averageRating, "profile_path": value["profile_path"]});
         }
         
         //console.log("Array for Sorting:", arrayForSorting)
@@ -122,8 +109,6 @@ const StatisticsFunctions = {
 
         const arrayForSorting = [];
         for (const [key, value] of Object.entries(object)) {
-            //console.log("key", key)
-            //console.log("value", value)
 
             const numberOfRatings = value["ratings"].length
 
@@ -134,11 +119,9 @@ const StatisticsFunctions = {
 
             const averageRating = sumOfRatings/numberOfRatings
 
-            //key = name, value = array of individual ratings
-            arrayForSorting.push({"name": key, "id":value["id"], "ratings": value["ratings"], "number_of_ratings":numberOfRatings, "average_rating": averageRating, "profile_path": value["profile_path"]});
+            //key = name or id, value = array of individual ratings
+            arrayForSorting.push({"name": value["name"], "id":value["id"], "ratings": value["ratings"], "number_of_ratings":numberOfRatings, "average_rating": averageRating, "profile_path": value["profile_path"]});
         }
-        
-        //console.log("Array for Sorting:", arrayForSorting)
 
         const sortingFunction = (a, b) => {
             // sort by most watched
@@ -219,8 +202,8 @@ const StatisticsFunctions = {
         const languagesObject = this.getSpokenLanguagesInList(list)
         const languagesSortedByMostWatched = this.sortByMostWatched(languagesObject)
         return languagesSortedByMostWatched
-    }, 
-
+    },
+    
 
 }
 export default StatisticsFunctions
