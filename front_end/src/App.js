@@ -34,34 +34,46 @@ function App() {
 
     //change recommendation category whenever rated films change
     useEffect(() => {
-        if (ratedFilms.length > 0) {
             const randomRecommendation = Math.floor(Math.random() * 2)
-            // console.log("random = ", randomRecommendation)
             //randomly pick a category to recommend
             if (randomRecommendation == 0) {
-                const topActorArray = StatisticsFunctions.getArrayOfActorsByRating(ratedFilms)
+                const topActorArray = StatisticsFunctions.getTopTenTopRatedActors(ratedFilms)
+                if (topActorArray.length > 0){
+                    const randomActor = Math.floor(Math.random() * topActorArray.length)
                 setRecommendedCategory({
-                    "name": topActorArray[0].name,
+                    "name": topActorArray[randomActor].name,
                     "category": "top rated actor",
-                    "value": topActorArray[0]
-                })
+                    "value": topActorArray[randomActor]
+                })} else {
+                    setRecommendedCategory(undefined)
+                }
             } else if (randomRecommendation == 1) {
-                const mostWatchedActorArray = StatisticsFunctions.getArrayOfActorsByMostWatched(ratedFilms)
+                const mostWatchedActorArray = StatisticsFunctions.getTopTenMostWatchedActors(ratedFilms)
+                if (mostWatchedActorArray.length > 0){
+                    const randomActor = Math.floor(Math.random() * mostWatchedActorArray.length)
                 setRecommendedCategory({
-                    "name": mostWatchedActorArray[0].name,
+                    "name": mostWatchedActorArray[randomActor].name,
                     "category": "most watched actor",
-                    "value": mostWatchedActorArray[0]
-                })
-            }
-        }
+                    "value": mostWatchedActorArray[randomActor]
+                })} else {
+                    setRecommendedCategory(undefined)
+                }
+            } 
     }, [ratedFilms])
 
     //change recommended films whenever recommeded category changes
     useEffect(() => {
         if (recommendedCategory != undefined) {
             console.log("ID: ", recommendedCategory.value.id)
-            ExternalServices.getFilmsByActorId(recommendedCategory.value.id)
+            if (recommendedCategory.category.includes("actor")){
+                ExternalServices.getFilmsByActorId(recommendedCategory.value.id)
                 .then(results => setRecommendFilms(results))
+            } else {
+                    ExternalServices.getFilmsByKeywordId(recommendedCategory.value.id)
+                    .then(results => setRecommendFilms(results))
+            }
+        } else {
+            setRecommendFilms([])
         }
     }, [recommendedCategory])
 

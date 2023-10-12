@@ -202,8 +202,55 @@ const StatisticsFunctions = {
         const languagesObject = this.getSpokenLanguagesInList(list)
         const languagesSortedByMostWatched = this.sortByMostWatched(languagesObject)
         return languagesSortedByMostWatched
-    },
+    },    
     
+    getTopTenMostWatchedActors (list) {
+        let topTenActors = this.getArrayOfActorsByMostWatched(list)
+        if (topTenActors.length >= 10) {
+            topTenActors = topTenActors.slice(0,10)
+        }
+        return topTenActors
+    },
 
+    getTopTenTopRatedActors (list) {
+        let topTenActors = this.getArrayOfActorsByRating(list)
+        if (topTenActors.length >= 10) {
+            topTenActors = topTenActors.slice(0,10)
+        }
+        return topTenActors
+    },
+
+    removeDuplicatedFilms(listToBeChecked, listToCheckAgainst) {
+        const checkedList = []
+
+        for (const film of listToBeChecked) {
+            let filmMatch = false
+            for (const referenceFilm of listToCheckAgainst) {
+                if (film.id == referenceFilm.id) {
+                    filmMatch = true
+                }
+            }
+            if (filmMatch == false) {
+                checkedList.push(film)
+            }
+        }
+        return checkedList
+    },
+
+    checkFilmOnList(filmId, referenceList) {
+        let onList = false
+        console.log("compare id: " + filmId)
+        for (const referenceFilm of referenceList) {
+            console.log("ref id: " + referenceFilm.id)
+            
+                if (filmId == referenceFilm.id) {
+                    console.log("MATCH MATCH MATCH MATCH")
+                    onList = true
+                    break
+                }
+            }
+        return onList
+    }
+    
 }
 export default StatisticsFunctions
