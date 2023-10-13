@@ -1,4 +1,5 @@
 import InternalServices from "./InternalServices"
+import ExternalServices from "./ExternalServices"
 
 const RatingsFunctions = {
 
@@ -53,15 +54,70 @@ const RatingsFunctions = {
     },
 
     postRatedFilmToDatabase (film, rating) {
-        const ratedFilm = this.addRatingToFilm(film, rating)
-        const ratedFilmWithCorrectFields = this.restructureAndRemoveFieldsFromFilm(ratedFilm)
-        InternalServices.postFilmToDatabase(ratedFilmWithCorrectFields)
-        return ratedFilmWithCorrectFields
+        let ratedFilm = this.addRatingToFilm(film, rating)
+        //If film is new to DB (has no "_id" field) then restructure and post
+        if (!film["_id"]) {
+            ratedFilm = this.restructureAndRemoveFieldsFromFilm(ratedFilm)
+            InternalServices.postFilmToDatabase(ratedFilm)
+        //Otherwise update film already in DB
+        } else {
+            InternalServices.updateFilm(film["_id"], ratedFilm)
+        }
+        return ratedFilm
     },
 
     postFilmToWishlist(film) {
         return this.postRatedFilmToDatabase(film, null)
+    },
+
+    checkFilmOnList(filmId, referenceList) {
+        let onList = false
+        for (const referenceFilm of referenceList) {
+                if (filmId == referenceFilm.id) {
+                    console.log("MATCH MATCH MATCH MATCH")
+                    onList = true
+                    break
+                }
+            }
+        return onList
+    },
+
+    //STILL ALLOWS YOU TO ADD SAME FILM TO RATED LIST SINCE FILMS ONLY CHECKED AGAINST THOSE IN WISHLIST
+    addToWishlist(wishlistFilmId, list, setList) {
+        if (this.checkFilmOnList(wishlistFilmId, list) == false) {
+            ExternalServices.getFilmById(wishlistFilmId)
+            .then( wishlistFilm => {
+                const wishlistFilmWithRating = RatingsFunctions.postFilmToWishlist(wishlistFilm)
+                setList([...list, wishlistFilmWithRating])
+            })
+        } else {
+            console.log("Cannot add to wishlist - film is already on wishlist")
+        }
+    },
+
+    //STILL ALLOWS YOU TO ADD SAME FILM TO WISHLIST SINCE FILMS ARE ONLY CHECKED AGAINST THOSE IN RATED LIST
+    addToRatedFilms(ratedFilmId, rating, list, setList) {
+        if (this.checkFilmOnList(ratedFilmId, list) == false){
+        ExternalServices.getFilmById(ratedFilmId)
+        .then(ratedFilm => { 
+            const ratedFilmWithRating = RatingsFunctions.postRatedFilmToDatabase(ratedFilm, rating)
+            setList([...list, ratedFilmWithRating])
+        })} else {
+            InternalServices.getFilmByFilmId(ratedFilmId)
+            .then(filmFromDB => { 
+                const ratedFilmWithRating = RatingsFunctions.postRatedFilmToDatabase(filmFromDB, rating)
+                const updatedList = [...list]
+                for (const film of updatedList) {
+                    if (film.id == ratedFilmWithRating.id) {
+                        updatedList.splice(updatedList.indexOf(film), 1, ratedFilmWithRating)
+                        break
+                    }
+                }
+                setList(updatedList)
+            })
+        }
     }
+    
 }
 
 export default RatingsFunctions
