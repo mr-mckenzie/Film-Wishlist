@@ -1,27 +1,26 @@
 import Rating from '@mui/material/Rating';
-import * as React from 'react';
+import RatingsFunctions from '../services/RatingsFunctions';
+import { useEffect, useState } from 'react';
 
+const RatingComponent = ({ filmId, ratedFilms, setRatedFilms }) => {
 
-const RatingComponent = ({addToRatedFilms, filmId}) => {
+    const [value, setValue] = useState(null)
 
-const [value, setValue] = React.useState(null)
+    useEffect(() =>
+        setValue(null), [filmId])
 
-
-React.useEffect(() => 
-setValue(null), [filmId])
-
-return (
-    <div className="rating_component" >
-        <p component="legend">Rate this film</p>
+    return (
+        <div className="rating_component" >
+            <p component="legend">Rate this film</p>
             <Rating
                 name="simple-controlled"
                 value={value}
                 onChange={(event, newValue) => {
-                setValue(newValue)
-                addToRatedFilms(filmId, newValue);
+                    setValue(newValue)
+                    RatingsFunctions.addToRatedFilms(filmId, newValue, ratedFilms, setRatedFilms);
                 }}
             />
-    </div>
-)
+        </div>
+    )
 }
 export default RatingComponent

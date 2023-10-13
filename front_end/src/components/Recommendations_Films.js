@@ -1,36 +1,10 @@
 import ExternalServices from "../services/ExternalServices"
 import InternalServices from "../services/InternalServices"
+import RatingsFunctions from "../services/RatingsFunctions"
+import StatisticsFunctions from "../services/StatisticsFunctions"
 import RatingComponent from "./Search_RatingComponent"
 
 const RecommendedFilms = ({ wishlist, setWishlist, ratedFilms, setRatedFilms, recommendedCategory, recommendedFilms }) => {
-
-    // adding the rating key value pair to api output
-    // ALSO deletes crew from object
-    const addRatingKeyValuePairAndDeleteCrew = (filmWithAddedRating, rating = null) => {
-        filmWithAddedRating["rating"] = rating
-        delete filmWithAddedRating["credits"]["crew"]
-        return filmWithAddedRating
-    }
-
-    // add film to a rated films list
-    const addToRatedFilms = (filmIdToAddToRatedFilms, rating) => {
-        ExternalServices.getFilmById(filmIdToAddToRatedFilms)
-            .then(ratedFilm => {
-                const ratedFilmWithRating = addRatingKeyValuePairAndDeleteCrew(ratedFilm, rating)
-                InternalServices.postFilmToDatabase(ratedFilmWithRating)
-                setRatedFilms([...ratedFilms, ratedFilmWithRating])
-            })
-    }
-
-    // add film to a wishlist
-    const addToWishlist = (filmIdToAddToWishlist, rating = null) => {
-        ExternalServices.getFilmById(filmIdToAddToWishlist)
-            .then(wishlistFilm => {
-                const wishlistFilmWithRating = addRatingKeyValuePairAndDeleteCrew(wishlistFilm, rating)
-                InternalServices.postFilmToDatabase(wishlistFilmWithRating)
-                setWishlist([...wishlist, wishlistFilmWithRating])
-            })
-    }
 
     // returning a grid of film titles and posters
     const recommendDisplay = (resultsToMap) => {
@@ -46,8 +20,8 @@ const RecommendedFilms = ({ wishlist, setWishlist, ratedFilms, setRatedFilms, re
                             <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" />
                         </div>
                         <div className="wishlist_card_body">
-                            <button className="wishlist_button" value={film._id} onClick={() => { addToWishlist(film.id) }}>Add to Wishlist</button>
-                            <RatingComponent addToRatedFilms={addToRatedFilms} filmId={film.id} />
+                            {(StatisticsFunctions.checkFilmOnList(film.id, wishlist)) ? <p>It's already on your wishlist</p> : <button className="wishlist_button" value={film._id} onClick={() => { RatingsFunctions.addToWishlist(film.id, wishlist, setWishlist) }}>Add to Wishlist</button>}
+                            <RatingComponent ratedFilms={ratedFilms} setRatedFilms={setRatedFilms} filmId={film.id} />
                             <h1 className="wishlist_card_title">{film.title}</h1>
                             <p>Average rating: {film.vote_average}</p>
                             <p>{film.overview}</p>
@@ -61,9 +35,10 @@ const RecommendedFilms = ({ wishlist, setWishlist, ratedFilms, setRatedFilms, re
 
     return (
         <>
-            {(recommendedCategory != undefined) ? <p>Because {recommendedCategory.name} is your {recommendedCategory.category}. </p> : null}
+            {(recommendedCategory != undefined) ? <h2>Since <i>{recommendedCategory.name}</i> is a <i>{recommendedCategory.category}</i>, why not try one of the following films:</h2> : <h2>Recommendations will appear once we have more data.</h2>}
             <div className="wishlist_container">
-                {recommendDisplay(recommendedFilms)}
+                {/* If on rated list, removed from list and cannot be recommended */}
+                {recommendDisplay(StatisticsFunctions.removeDuplicatedFilms(recommendedFilms, ratedFilms))}
             </div>
         </>
     )
