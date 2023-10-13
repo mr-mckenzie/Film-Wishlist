@@ -2,8 +2,8 @@ const baseURL = 'http://localhost:9000/api/films'
 
 const InternalServices = {
 
-    getFilmById(id) {
-        return fetch(baseURL + id)
+    getFilmByFilmId(id) {
+        return fetch(baseURL + '/film_id/' + id)
         .then (response => response.json())
     },
 
@@ -46,9 +46,11 @@ const InternalServices = {
         })
     },
 
-    updateChosenFilm(id) {
-        return fetch(baseURL + id, {
-            method: 'PUT'
+    updateFilm(id, filmObject) {
+        return fetch(baseURL + '/' + id, {
+            method: 'PUT',
+            body: JSON.stringify(filmObject),
+            headers: { 'Content-Type': 'application/json'}
         })
         .then((response) => response.json())
     }
