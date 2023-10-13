@@ -86,23 +86,34 @@ const createRouter = function (collection) {
         })
 
 
-    // router.put('/:id', (req, res) => {
-    //     data[req.params.id] = req.body;
-    //     res.json(data);
-    // });
+    router.get('/film_id/:id', (request, response) => {
+        const id = Number(request.params.id)
+        collection
+            .findOne({ id: id })
+            .then(result => {
+                response.json(result)
+            })
+            .catch((err) => {
+                console.error(err)
+                response.status(404)
+                response.json({ status: 404, error: err })
+            })
+    })
 
-    // router.delete('/:id', (req, res) => {
-    //     data.splice(req.params.id, 1);
-    //     res.json(data);
-    // });
-
-    // router.get('/', (req, res) => {
-    //     res.json(data);
-    // });
-
-    // router.get('/:id', (req, res) => {
-    //     res.json(data[req.params.id]);
-    // });
+    router.put('/:id', (req, res) => {
+        const id = req.params.id
+        const updatedData = req.body
+        delete updatedData._id
+        collection
+            .updateOne({ _id: ObjectID(id) }, { $set: updatedData })
+            .then(result => {
+                res.json(result)
+            })
+            .catch((err) => {
+                res.status(500)
+                res.json({ status: 500, error: err })
+            })
+    })
 
     return router;
 };
