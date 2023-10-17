@@ -79,8 +79,8 @@ const createRouter = function (collection) {
         .then((docs) => response.json(docs))
         .catch((err) => {
             console.error(err)
-            response.status(500)
-            response.json({status: 500, error: err})
+            response.status(404)
+            response.json({status: 404, error: err})
         })
     })
 
@@ -106,8 +106,8 @@ const createRouter = function (collection) {
         .then((docs) => response.json(docs))
         .catch((err) => {
             console.error(err)
-            response.status(500)
-            response.json({status: 500, error: err})
+            response.status(404)
+            response.json({status: 404, error: err})
         })
     })
 
