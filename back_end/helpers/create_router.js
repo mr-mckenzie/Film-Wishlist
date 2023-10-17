@@ -16,6 +16,30 @@ const createRouter = function (collection) {
         }))
     });
 
+    // get all films (wishlist and rated)
+    router.get('/films', (request, response) => {
+        collection.find()
+        .toArray()
+        .then((docs) => response.json(docs))
+        .catch((err) => {
+            console.error(err)
+            response.status(404)
+            response.json({status: 404, error: err})
+        })
+    })
+
+    // delete film by film id
+    router.delete('/films/:film_id', (request, response) => {
+        const film_id = Number(request.params.id)
+        collection.deleteOne({id : film_id})
+        .then(response => response.json())
+        .catch((err) => {
+            console.error(err)
+            response.status(500)
+            response.json({status: 500, error: err})
+        })
+    })
+
     // get all films with rating = null (i.e. wishlist films)
     router.get('/wishlist', (request, response) => {
         collection.find({rating: null})
