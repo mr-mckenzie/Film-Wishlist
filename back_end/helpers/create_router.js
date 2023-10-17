@@ -17,7 +17,7 @@ const createRouter = function (collection) {
     });
 
     // get all films (wishlist and rated)
-    router.get('/films', (request, response) => {
+    router.get('/', (request, response) => {
         collection.find()
         .toArray()
         .then((docs) => response.json(docs))
@@ -28,16 +28,48 @@ const createRouter = function (collection) {
         })
     })
 
-    // delete film by film id
-    router.delete('/films/:film_id', (request, response) => {
+    // get film by film id
+    router.get('/:film_id', (request, response) => {
         const film_id = Number(request.params.id)
-        collection.deleteOne({id : film_id})
+        collection
+            .findOne({ id: film_id })
+            .then(result => {
+                response.json(result)
+            })
+            .catch((err) => {
+                console.error(err)
+                response.status(404)
+                response.json({ status: 404, error: err })
+            })
+    })
+
+    // delete film by film id
+    router.delete('/:film_id', (request, response) => {
+        const film_id = Number(request.params.film_id)
+        collection.deleteOne({ id : film_id })
         .then(response => response.json())
         .catch((err) => {
             console.error(err)
             response.status(500)
             response.json({status: 500, error: err})
         })
+    })
+
+    // update film by film id
+    router.put('/:film_id', (req, res) => {
+        const film_id = Number(req.params.film_id)
+        const updatedData = req.body
+        delete updatedData._id
+        collection
+            .updateOne({ id: film_id }, { $set: updatedData })
+            .then(result => {
+                res.json(result)
+            })
+            .catch((err) => {
+                console.error(err)
+                res.status(500)
+                res.json({ status: 500, error: err })
+            })
     })
 
     // get all films with rating = null (i.e. wishlist films)
@@ -93,38 +125,6 @@ const createRouter = function (collection) {
                 response.json({status: 500, error: err})
             }) 
         })
-
-
-    // get film by film id
-    router.get('/film_id/:id', (request, response) => {
-        const id = Number(request.params.id)
-        collection
-            .findOne({ id: id })
-            .then(result => {
-                response.json(result)
-            })
-            .catch((err) => {
-                console.error(err)
-                response.status(404)
-                response.json({ status: 404, error: err })
-            })
-    })
-
-    // update film by MongoDB id
-    router.put('/:id', (req, res) => {
-        const id = req.params.id
-        const updatedData = req.body
-        delete updatedData._id
-        collection
-            .updateOne({ _id: ObjectID(id) }, { $set: updatedData })
-            .then(result => {
-                res.json(result)
-            })
-            .catch((err) => {
-                res.status(500)
-                res.json({ status: 500, error: err })
-            })
-    })
 
     return router;
 };
