@@ -1,7 +1,7 @@
 import ExternalServices
 from '../services/ExternalServices';
-import Rating from '@mui/material/Rating';
 import RatingsFunctions from '../services/RatingsFunctions';
+import RatingComponent from './Search_RatingComponent';
 
 const RatedFilms = ({ratedFilms, setRatedFilms}) => {
 
@@ -15,7 +15,7 @@ const RatedFilms = ({ratedFilms, setRatedFilms}) => {
                 <h1>{film.title}</h1>
                 <p>Average rating: {film.vote_average}</p>
                 <p>{film.overview}</p>
-                <Rating className="rating" name="read-only" value={film.rating} readOnly />
+                <RatingComponent className="rating" filmId={film.id} ratedFilms={ratedFilms} setRatedFilms={setRatedFilms} rating={film.rating}/>
             </div>
         </div>
 )

@@ -2,12 +2,12 @@ import Rating from '@mui/material/Rating';
 import RatingsFunctions from '../services/RatingsFunctions';
 import { useEffect, useState } from 'react';
 
-const RatingComponent = ({ filmId, ratedFilms, setRatedFilms }) => {
+const RatingComponent = ({ filmId, ratedFilms, setRatedFilms, rating=null }) => {
 
-    const [value, setValue] = useState(null)
+    const [value, setValue] = useState(rating)
 
     useEffect(() =>
-        setValue(null), [filmId])
+        setValue(rating), [filmId])
 
     return (
         <div className="rating_component" >
