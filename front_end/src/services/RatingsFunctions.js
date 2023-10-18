@@ -116,8 +116,21 @@ const RatingsFunctions = {
                 setList(updatedList)
             })
         }
-    }
-    
+    },
+
+        deleteFilmFromRatedList(ratedFilmId, setList) {
+            InternalServices.deleteFilmByFilmID(ratedFilmId)
+            .then(() => InternalServices.getRatedFilms()
+            .then((updatedRatedFilms) => {setList(updatedRatedFilms)})
+            )
+        },
+
+        deleteFilmFromWishlist(wishlistFilmId, setList) {
+            InternalServices.deleteFilmByFilmID(wishlistFilmId)
+            .then(() => InternalServices.getWishlistFilms()
+            .then((updatedWishlistFilms) => {setList(updatedWishlistFilms)})
+            )
+        }
 }
 
 export default RatingsFunctions
