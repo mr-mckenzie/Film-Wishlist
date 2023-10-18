@@ -1,5 +1,4 @@
 import ExternalServices from "../services/ExternalServices"
-import InternalServices from "../services/InternalServices"
 import RatingsFunctions from "../services/RatingsFunctions"
 import StatisticsFunctions from "../services/StatisticsFunctions"
 import RatingComponent from "./Search_RatingComponent"
@@ -20,7 +19,9 @@ const RecommendedFilms = ({ wishlist, setWishlist, ratedFilms, setRatedFilms, re
                             <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" />
                         </div>
                         <div className="wishlist_card_body">
-                            {(StatisticsFunctions.checkFilmOnList(film.id, wishlist)) ? <p>It's already on your wishlist</p> : <button className="wishlist_button" value={film._id} onClick={() => { RatingsFunctions.addToWishlist(film.id, wishlist, setWishlist) }}>Add to Wishlist</button>}
+                            {(StatisticsFunctions.checkFilmOnList(film.id, wishlist)) ? 
+                                <button className="wishlist_button" value={film._id} onClick={() => { RatingsFunctions.deleteFilmFromWishlist(film.id, setWishlist) }}>Remove from Wishlist</button> : 
+                                <button className="wishlist_button" value={film._id} onClick={() => { RatingsFunctions.addToWishlist(film.id, wishlist, setWishlist) }}>Add to Wishlist</button>}
                             <RatingComponent ratedFilms={ratedFilms} setRatedFilms={setRatedFilms} filmId={film.id} />
                             <h1 className="wishlist_card_title">{film.title}</h1>
                             <p>Average rating: {film.vote_average}</p>
