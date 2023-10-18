@@ -22,15 +22,30 @@ function App() {
     const [recommendFilms, setRecommendFilms] = useState([])
 
     // populating wishlist from database
-    useEffect(() => { InternalServices.getWishlistFilms()
-        .then(wishlistFilms => setWishlist(wishlistFilms))
-        // console.log("My Wishlist", wishlist)
-    },[])
+    useEffect(() => {
+        InternalServices.getWishlistFilms()
+        .then((wishlistFilms) => {
+            setWishlist(wishlistFilms)
+        })
+        .catch(() => {
+            //if no response (e.g. backend not running) go with empty wishlist
+            console.log("Warning - no database not connected - no data persistance")
+            setWishlist([])
+        })
+    }, [])
 
     // populating rated list from database
-    useEffect(() => { InternalServices.getRatedFilms()
-        .then(films => setRatedFilms(films))
-    },[])
+    useEffect(() => {
+        InternalServices.getRatedFilms()
+        .then((films) => {
+            setRatedFilms(films)
+        })
+        .catch(() => {
+            //if no response (e.g. backend not running) go with empty wishlist
+            console.log("Warning - database not connected - no data persistance")
+            setRatedFilms([])
+        })
+    }, [])
 
     //change recommendation category whenever rated films change
     useEffect(() => {
