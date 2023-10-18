@@ -47,7 +47,7 @@ const createRouter = function (collection) {
     router.delete('/single/:film_id', (request, response) => {
         const film_id = Number(request.params.film_id)
         collection.deleteOne({ id : film_id })
-        .then(response => response.json())
+        .then(result => response.json(result))
         .catch((err) => {
             console.error(err)
             response.status(500)
