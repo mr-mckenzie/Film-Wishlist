@@ -29,8 +29,8 @@ const createRouter = function (collection) {
     })
 
     // get film by film id
-    router.get('/:film_id', (request, response) => {
-        const film_id = Number(request.params.id)
+    router.get('/single/:film_id', (request, response) => {
+        const film_id = Number(request.params.film_id)
         collection
             .findOne({ id: film_id })
             .then(result => {
@@ -44,7 +44,7 @@ const createRouter = function (collection) {
     })
 
     // delete film by film id
-    router.delete('/:film_id', (request, response) => {
+    router.delete('/single/:film_id', (request, response) => {
         const film_id = Number(request.params.film_id)
         collection.deleteOne({ id : film_id })
         .then(response => response.json())
@@ -56,7 +56,7 @@ const createRouter = function (collection) {
     })
 
     // update film by film id
-    router.put('/:film_id', (req, res) => {
+    router.put('/single/:film_id', (req, res) => {
         const film_id = Number(req.params.film_id)
         const updatedData = req.body
         delete updatedData._id
