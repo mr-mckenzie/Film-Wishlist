@@ -7,7 +7,7 @@ const RatedFilms = ({ratedFilms, setRatedFilms}) => {
 
     const ratedFilmsDisplay = ratedFilms.map((film) => 
         <div key = {film.id} className="ratings_card">
-            <div class="ratings_poster_image">
+            <div className="ratings_poster_image">
                 <img src={ExternalServices.getFullPosterURLByPath(film.poster_path)} alt="film poster" />
             </div>
             <div className="ratings_card_body">
