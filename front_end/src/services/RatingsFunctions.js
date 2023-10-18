@@ -55,8 +55,8 @@ const RatingsFunctions = {
 
     postRatedFilmToDatabase (film, rating) {
         let ratedFilm = this.addRatingToFilm(film, rating)
-        //If film is new to DB (has no "_id" field) then restructure and post
-        if (!film["_id"]) {
+        //If film is new to DB (still has keywords.keywords field) then restructure and post
+        if (film["keywords"]["keywords"]) {
             ratedFilm = this.restructureAndRemoveFieldsFromFilm(ratedFilm)
             InternalServices.postFilmToDatabase(ratedFilm)
         //Otherwise update film already in DB
