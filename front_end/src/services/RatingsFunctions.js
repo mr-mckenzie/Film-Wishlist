@@ -61,7 +61,7 @@ const RatingsFunctions = {
             InternalServices.postFilmToDatabase(ratedFilm)
         //Otherwise update film already in DB
         } else {
-            InternalServices.updateFilm(film["_id"], ratedFilm)
+            InternalServices.updateFilm(film.id, ratedFilm)
         }
         return ratedFilm
     },
@@ -87,7 +87,7 @@ const RatingsFunctions = {
         if (this.checkFilmOnList(wishlistFilmId, list) == false) {
             ExternalServices.getFilmById(wishlistFilmId)
             .then( wishlistFilm => {
-                const wishlistFilmWithRating = RatingsFunctions.postFilmToWishlist(wishlistFilm)
+                const wishlistFilmWithRating = this.postFilmToWishlist(wishlistFilm)
                 setList([...list, wishlistFilmWithRating])
             })
         } else {
