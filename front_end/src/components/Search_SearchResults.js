@@ -22,7 +22,7 @@ const SearchResults = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, s
                             <p>({film.release_date.slice(0,4)})</p>
                             {(StatisticsFunctions.checkFilmOnList(film.id, wishlist)) ? <p>It's already on wishlist</p> : <button className="wishlist_button" value={film._id} onClick={() => { RatingsFunctions.addToWishlist(film.id, wishlist, setWishlist) }}>Add to Wishlist</button>}
                             {/* <button className="wishlist_button" onClick ={()=>{addToWishlist(film.id)}}>Add to Wishlist</button> */}
-                            <RatingComponent ratedFilms = {ratedFilms} setRatedFilms={setRatedFilms} filmId = {film.id}/>
+                            <RatingComponent ratedFilms = {ratedFilms} setRatedFilms={setRatedFilms} filmId = {film.id} rating={RatingsFunctions.getRating(film.id, ratedFilms)}/>
                         </div>
                     </div>
                 )

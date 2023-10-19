@@ -88,6 +88,14 @@ const RatingsFunctions = {
         return onList
     },
 
+    getRating(filmId, referenceList) {
+        if (this.checkFilmOnList(filmId, referenceList) == true) {
+            return referenceList[referenceList.findIndex(film => film.id == filmId)].rating
+        } else {
+            return null
+        }
+    },
+
     //STILL ALLOWS YOU TO ADD SAME FILM TO RATED LIST SINCE FILMS ONLY CHECKED AGAINST THOSE IN WISHLIST
     addToWishlist(wishlistFilmId, list, setList) {
         if (this.checkFilmOnList(wishlistFilmId, list) == false) {
