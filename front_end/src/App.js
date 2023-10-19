@@ -92,6 +92,34 @@ function App() {
         }
     }, [recommendedCategory])
 
+    const setWishlistWithDuplicateCheck = (filmToAdd) => {
+        let match = false
+        for (const film of wishlist) {
+            if (film.id === filmToAdd.id) {
+                console.log("same film, cannot add again")
+                match = true
+                break
+            } 
+        }
+        if (match === false) {
+            setWishlist([...wishlist, filmToAdd])
+        }
+    }
+
+    const setRatedFilmsWithDuplicateCheck = (filmToAdd) => {
+        let match = false
+        for (const film of ratedFilms) {
+            if (film.id === filmToAdd.id) {
+                console.log("same film, cannot add again")
+                match = true
+                break
+            } 
+        }
+        if (match === false) {
+            setRatedFilms([...ratedFilms, filmToAdd])
+        }
+    }
+
     const SectionStyle = {
       // input height/width/display etc as needed
         display: 'flex',
