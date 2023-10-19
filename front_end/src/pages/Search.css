@@ -71,13 +71,13 @@
     text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.search_poster_image{
+.search_poster_image > img {
     height: 500px;
     width: 320px;
     background-color: #3BC7C6;
     position: absolute;
     border-radius: 15px;
-    object-fit: cover;
+    object-fit: fill;
     opacity: 1;
     overflow: hidden;
 }

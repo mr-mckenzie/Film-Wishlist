@@ -2,15 +2,13 @@ const baseURL = 'http://localhost:9000/api/films'
 
 const InternalServices = {
 
-    getFilmById(id) {
-        return fetch(baseURL + id)
+    getFilmByFilmId(film_id) {
+        return fetch(baseURL + '/single/' + film_id)
         .then (response => response.json())
     },
 
     postFilmToDatabase(filmObject){
-        return fetch(baseURL
-            // + filmObject.id
-            , 
+        return fetch(baseURL,
             {
             method: 'POST',
             body: JSON.stringify(filmObject),
@@ -29,26 +27,20 @@ const InternalServices = {
         .then (response => response.json())
     },
 
-    deleteWishlistFilmByID(id) {
-        return fetch(baseURL +'/wishlist/'+ id, {
-            method:'DELETE'
-        })
-    },
-
     getRatedFilms(){
         return fetch(baseURL + '/rating')
         .then (response => response.json())
     },
 
-    deleteRatedFilm(id) {
-        return fetch(baseURL +'/rating/'+ id, {
-            method:'DELETE'
-        })
+    deleteFilmByFilmID(film_id) {
+        return fetch(baseURL + '/single/' + film_id, {method:'DELETE'})
     },
 
-    updateChosenFilm(id) {
-        return fetch(baseURL + id, {
-            method: 'PUT'
+    updateFilm(film_id, filmObject) {
+        return fetch(baseURL + '/single/' + film_id, {
+            method: 'PUT',
+            body: JSON.stringify(filmObject),
+            headers: { 'Content-Type': 'application/json'}
         })
         .then((response) => response.json())
     }

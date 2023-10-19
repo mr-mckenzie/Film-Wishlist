@@ -70,13 +70,13 @@
     text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.ratings_poster_image{
+.ratings_poster_image > img{
     height: 500px;
     width: 320px;
     background-color: #49CC9A;
     position: absolute;
     border-radius: 15px;
-    object-fit: cover;
+    object-fit: fill;
     opacity: 1;
     overflow: hidden;
 }

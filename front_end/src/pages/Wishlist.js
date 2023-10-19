@@ -4,7 +4,7 @@ import './Wishlist.css'
 
 
 const Wishlist = ({wishlist, setWishlist}) => (
-    <div class="wishlist_page">
+    <div className="wishlist_page">
         <h1>Wishlist</h1>
         <WishlistFilms wishlist={wishlist} setWishlist={setWishlist}/>
     </div>

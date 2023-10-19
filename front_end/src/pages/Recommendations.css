@@ -17,9 +17,18 @@
     letter-spacing: -1px;
     line-height: 1;
     text-align: left;
-    margin-block-start: 5%;
-    margin-block-end: 5%;
+    margin-block-start: 2.5%;
+    margin-block-end: 1%;
     text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.recommendations_page > h2 {
+    color: #111;
+    font-family: 'Nunito Sans', sans-serif;
+    line-height: 1;
+    text-align: left;
+    /* margin-block-start: 2.5%; */
+    margin-block-end: 3.5%;
 }
 
 .wishlist_container {
@@ -61,7 +70,6 @@
     font-weight: 900;
     color: rgb(255, 255, 255);
     text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-
 }
 
 .wishlist_card_body>p {
@@ -70,13 +78,13 @@
     text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.wishlist_poster_image {
+.wishlist_poster_image > img{
     height: 500px;
     width: 320px;
     background-color: #46CBB1;
     position: absolute;
     border-radius: 15px;
-    object-fit: cover;
+    object-fit: fill;
     opacity: 1;
     overflow: hidden;
 }
