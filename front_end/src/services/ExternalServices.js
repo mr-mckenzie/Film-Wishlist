@@ -66,7 +66,7 @@ const ExternalServices = {
         }
       };
       
-   const resultFromFetch = fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_count.gte=10&with_cast=${actorId}&with_runtime.gte=60`, options)
+   const resultFromFetch = fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_count.desc&vote_count.gte=10&with_cast=${actorId}&with_runtime.gte=60`, options)
         .then(response => response.json())
         .then(response => response.results)
         .catch(err => console.error(err));
@@ -107,7 +107,7 @@ const ExternalServices = {
         //     .then(response => response["results"][0]["id"])
         //     .then(response => fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_keywords=${response}`, options))
 
-        const resultFromFetch = fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&vote_count.gte=10&with_keywords=${keywordId}&with_runtime.gte=60`, options)
+        const resultFromFetch = fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_count.desc.desc&vote_count.gte=10&with_keywords=${keywordId}&with_runtime.gte=60`, options)
 
             .then(response => response.json())
             .then(response => response.results)
