@@ -59,9 +59,15 @@ const RatingsFunctions = {
         if (film["keywords"]["keywords"]) {
             ratedFilm = this.restructureAndRemoveFieldsFromFilm(ratedFilm)
             InternalServices.postFilmToDatabase(ratedFilm)
+            .catch(() => {
+                console.log("ERROR - no database connection")
+            })
         //Otherwise update film already in DB
         } else {
             InternalServices.updateFilm(film.id, ratedFilm)
+            .catch(() => {
+                console.log("ERROR - no database connection")
+            })
         }
         return ratedFilm
     },
