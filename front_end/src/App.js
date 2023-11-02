@@ -155,6 +155,8 @@ function App() {
             </FullpageSection>
             <FullpageSection style={SectionStyle}>
                 <Wishlist 
+                ratedFilms={ratedFilms}
+                setRatedFilms={setRatedFilms}
                 wishlist={wishlist} 
                 setWishlist={setWishlist}/>
             </FullpageSection>
@@ -162,6 +164,8 @@ function App() {
                 <Ratings
                     ratedFilms = {ratedFilms}
                     setRatedFilms = {setRatedFilms}
+                    wishlist={wishlist}
+                    setWishlist={setWishlist}
                 />
             </FullpageSection>
             <FullpageSection style={SectionStyle}>
