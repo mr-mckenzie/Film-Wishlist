@@ -1,6 +1,6 @@
 import React from "react";
 import './Recommendations.css'
-import RecommededFilms from "../components/Recommendations_Films";
+//import RecommededFilms from "../components/Recommendations_Films";
 import Carousel from "../components/Carousel"
 
 const Recommendations = ({ wishlist, setWishlist, ratedFilms, setRatedFilms, recommendedCategory, recommendedFilms }) => (

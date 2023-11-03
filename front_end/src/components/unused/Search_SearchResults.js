@@ -1,8 +1,8 @@
 import * as React from 'react';
-import ExternalServices from '../services/ExternalServices';
-import StatisticsFunctions from '../services/StatisticsFunctions';
-import RatingsFunctions from '../services/RatingsFunctions';
-import RatingComponent from "./Search_RatingComponent"
+import ExternalServices from '../../services/ExternalServices';
+import StatisticsFunctions from '../../services/StatisticsFunctions';
+import RatingsFunctions from '../../services/RatingsFunctions';
+import RatingComponent from "../Search_RatingComponent"
 
 // this is the main function in this folder
 const SearchResults = ({listOfFilmsFromAPI, wishlist, setWishlist, ratedFilms, setRatedFilms}) => {

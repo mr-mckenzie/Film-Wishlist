@@ -1,5 +1,5 @@
 import React from "react";
-import RatedFilms from "../components/Ratings_RatedFilms";
+//import RatedFilms from "../components/Ratings_RatedFilms";
 import './Ratings.css'
 import Carousel from "../components/Carousel";
 

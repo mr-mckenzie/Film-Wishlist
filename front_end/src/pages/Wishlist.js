@@ -1,5 +1,5 @@
 import React from "react";
-import WishlistFilms from "../components/Wishlist_Films";
+//import WishlistFilms from "../components/Wishlist_Films";
 import './Wishlist.css'
 import Carousel from "../components/Carousel";
 
