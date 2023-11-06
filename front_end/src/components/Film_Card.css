@@ -27,13 +27,15 @@
     font-weight: 900; 
     color: rgb(255, 255, 255);
     text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-
+    margin-bottom: 0.5rem;
 }
 
 .card_body > p {
     font-weight: 300; 
     color: white;
     text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
 }
 
 .poster_image > img{
@@ -54,8 +56,69 @@
 }
 
 .card:hover > .poster_image{
-    opacity: 0.5;
+    opacity: 0.25;
 }
+
+.rating_component{
+    background-color: rgb(88, 154, 252);
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(135deg,rgb(92, 44, 237), #24a3ba);
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 2px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    position: sticky;
+}
+
+.rating_component {
+    background: linear-gradient(235deg,#27e2cc,#923dd7);
+    width: 100%;
+    align-self: center;
+    border-radius: 15px;
+    color: white;
+}
+
+.rating_component:hover{
+background: linear-gradient(135deg,#2cc4df,#66d55a);
+color: black;
+}
+
+.ratings_component:active {
+    transform: scale(0.96)
+}
+
+.rating{
+    justify-content: center;
+}
+
+.wishlist_button{
+    background-color: rgb(88, 154, 252);
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(135deg,rgb(92, 44, 237), #24a3ba);
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 2px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    position: sticky;
+}
+
+.wishlist_button:hover{
+background: linear-gradient(135deg,#2cc4df,#66d55a);
+color: black;
+}
+
+.wishlist_button:active {
+    transform: scale(0.96)
+}
+
 
 .ratings_button{
     background-color: rgb(88, 154, 252);
@@ -79,8 +142,4 @@ color: black;
 
 .ratings_button:active {
     transform: scale(0.96)
-}
-
-.rating{
-    justify-content: center;
 }
