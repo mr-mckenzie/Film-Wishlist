@@ -1,7 +1,7 @@
 import ExternalServices
-from '../services/ExternalServices';
-import RatingsFunctions from '../services/RatingsFunctions';
-import RatingComponent from './Search_RatingComponent';
+from '../../services/ExternalServices';
+import RatingsFunctions from '../../services/RatingsFunctions';
+import RatingComponent from '../Search_RatingComponent';
 
 const RatedFilms = ({ratedFilms, setRatedFilms}) => {
 

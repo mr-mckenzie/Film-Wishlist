@@ -1,5 +1,5 @@
-import ExternalServices from "../services/ExternalServices";
-import RatingsFunctions from "../services/RatingsFunctions";
+import ExternalServices from "../../services/ExternalServices";
+import RatingsFunctions from "../../services/RatingsFunctions";
 
 const WishlistFilms = ({ wishlist, setWishlist }) => {
 

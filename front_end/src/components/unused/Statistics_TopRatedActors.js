@@ -1,4 +1,4 @@
-import StatisticsFunctions from "../services/StatisticsFunctions"
+import StatisticsFunctions from "../../services/StatisticsFunctions"
 import { BarChart, Bar, XAxis} from "recharts";
 
 const TopRatedActors = ({ratedFilms}) => {

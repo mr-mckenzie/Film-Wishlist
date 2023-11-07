@@ -1,7 +1,7 @@
-import ExternalServices from "../services/ExternalServices"
-import RatingsFunctions from "../services/RatingsFunctions"
-import StatisticsFunctions from "../services/StatisticsFunctions"
-import RatingComponent from "./Search_RatingComponent"
+import ExternalServices from "../../services/ExternalServices"
+import RatingsFunctions from "../../services/RatingsFunctions"
+import StatisticsFunctions from "../../services/StatisticsFunctions"
+import RatingComponent from "../Search_RatingComponent"
 
 const RecommendedFilms = ({ wishlist, setWishlist, ratedFilms, setRatedFilms, recommendedCategory, recommendedFilms }) => {
 
