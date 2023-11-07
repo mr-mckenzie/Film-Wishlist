@@ -1,5 +1,4 @@
 import React from "react";
-import TopRatedActors from "../components/Statistics_TopRatedActors";
 import './Statistics.css'
 import RatedFilmsInfo from "../components/Statistics_RatedFilmsInfo";
 
