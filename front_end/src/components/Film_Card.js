@@ -4,6 +4,7 @@ import ExternalServices from "../services/ExternalServices"
 import RatingComponent from "./Search_RatingComponent"
 import './Film_Card.css'
 import Wishlist_Button from "./Wishlist_Button"
+import Plot_Overview from "./Plot_Overview"
 
 const Film_Card = ({film, wishlist, setWishlist, ratedFilms, setRatedFilms}) => {
 
@@ -27,8 +28,8 @@ const Film_Card = ({film, wishlist, setWishlist, ratedFilms, setRatedFilms}) => 
             <RatingComponent ratedFilms = {ratedFilms} setRatedFilms={setRatedFilms} filmId = {film.id} rating={RatingsFunctions.getRating(film.id, ratedFilms)}/>
             {/* //  AN EXPLICIT REMOVE FROM RATED FILMS button */}
             {(StatisticsFunctions.checkFilmOnList(film.id, ratedFilms)) ? <button className="ratings_button" value={film._id} onClick={() => RatingsFunctions.deleteFilmFromRatedList(film.id, setRatedFilms)}>Remove from rated films</button> : <></>}
-            {/* //  FILM OVERVIEW */}
-            <p>{film.overview}</p>
+            {/* //  PLOT OVERVIEW */}
+            <Plot_Overview overview={film.overview}/>
         </div>
     </div>
     )
