@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
@@ -17,15 +16,15 @@ export default function Chips({searchResults, setListOfFilmsFromAPI, content}) {
                 return (
                     content==="actor" ? 
 
-                    <Button id={result.id} onClick={handleClick} variant="outlined" className='actor_button'>
+                    <Button id={result.id} onClick={handleClick} variant="outlined" className='actor_button' fullWidth="true" size='small' sx={{display: "flex", flexWrap: "nowrap", flexDirection:"row", minWidth:"10rem", maxWidth:"20rem"}}>
                         <Avatar src={ExternalServices.getFullActorImageURLByPath(result.profile_path)}/>
-                        {result.name}
+                        <p sx={{width:"5rem"}}>{result.name}</p>
                     </Button> 
                 
                 :
                 
-                    <Button id={result.id} onClick={handleClick} variant="outlined" className='keyword_button'>
-                    {result.name}
+                    <Button id={result.id} onClick={handleClick} variant="outlined" className='keyword_button'fullWidth="true" size='small'>
+                        <p>{result.name}</p>
                     </Button> 
 
                 )
@@ -47,7 +46,7 @@ export default function Chips({searchResults, setListOfFilmsFromAPI, content}) {
 
 
   return (
-    <Stack className="button_container" direction={"row"} spacing={10}>
+    <Stack className="button_container" direction={"row"} spacing={1}>
         {mapSearchResults(searchResults)}
     </Stack>
   );

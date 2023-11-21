@@ -21,10 +21,12 @@ export default function CategoryToggleButton({setSearchCategory, searchCategory,
       exclusive
       onChange={handleChange}
       aria-label="Platform"
+      fullWidth="true"
+      size='small'
     >
-      <ToggleButton value="title">By Film Title</ToggleButton>
-      <ToggleButton value="actor">By Actor</ToggleButton>
-      <ToggleButton value="keyword">By Keyword</ToggleButton>
+      <ToggleButton className="search_button" value="title">By Film Title</ToggleButton>
+      <ToggleButton className="search_button" value="actor">By Actor</ToggleButton>
+      <ToggleButton className="search_button" value="keyword">By Keyword</ToggleButton>
     </ToggleButtonGroup>
   );
 }

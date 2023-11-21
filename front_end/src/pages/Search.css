@@ -22,38 +22,12 @@
     text-shadow: -1px -1px 0 rgb(172, 172, 172), 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.search_button{
-    background-color: rgb(88, 154, 252);
-    cursor: pointer;
-    color: white;
-    background: linear-gradient(135deg,rgb(92, 44, 237), #24a3ba);
-    text-align: center;
-    padding: 10px 16px;
-    border-radius: 8px;
-    border: 2px;
-    box-sizing: border-box;
-    display: inline-block;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    position: sticky;
-}
-
-.search_button:active {
-    transform: scale(0.96)
-}
 
 .search_form {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 65%;
     justify-items: center;
-}
-
-.search_bar {
-    width: 100%;
-}
-
-.search_category {
-    width: 100%;
 }
 
 .search_chips {
@@ -62,4 +36,9 @@
     flex-wrap: nowrap;
     overflow: scroll;
     justify-self: safe center;
+    height: 4.5rem;
+}
+
+.actor_button.MuiToggleButton-root {
+    text-wrap: nowrap;
 }
